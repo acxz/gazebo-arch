@@ -1,0 +1,23 @@
+pkgbase = sdformat
+	pkgdesc = SDF Converter for gazebo
+	pkgver = 12.3.0
+	pkgrel = 1
+	url = http://sdformat.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = ignition-cmake
+	makedepends = ignition-utils
+	makedepends = ignition-tools
+	makedepends = ruby
+	depends = boost
+	depends = tinyxml2
+	depends = ignition-math>=6
+	depends = python-psutil
+	depends = urdfdom
+	source = sdformat-12.3.0.tar.gz::https://github.com/ignitionrobotics/sdformat/archive/sdformat12_12.3.0.tar.gz
+	sha256sums = 3e0ec16fcc261e08ff6b9bb751bfab3da56636ae95135cd5b88efb59bf8042ab
+
+pkgname = sdformat
