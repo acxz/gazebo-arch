@@ -16,8 +16,7 @@ pkgbase = ignition-fuel_tools-4
 	depends = ignition-msgs-5
 	depends = ignition-tools
 	optdepends = ruby
-	source = ignition-fuel_tools-4.4.0.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/ignition-fuel-tools4_4.4.0.tar.gz
-	sha256sums = aa888518a650ef68ce8c37d97f53c63861295e3b210a68b4be514a727b5ba228
+	source = ignition-fuel_tools-4-4.4.0.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/ignition-fuel-tools4_4.4.0.tar.gz
+	sha256sums = ad218743ac35cc71f5324a13a34959c596c1d6e5c25da52870fcbab02432939d
 
 pkgname = ignition-fuel_tools-4
-
