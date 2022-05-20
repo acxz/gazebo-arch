@@ -16,6 +16,8 @@ pkgbase = ignition-common-3
 	depends = ffmpeg4.4
 	provides = ignition-common=3.14.0
 	source = https://github.com/ignitionrobotics/ign-common/archive/ignition-common3_3.14.0.tar.gz
+	source = missing-include-cstring.patch
 	sha256sums = 293ff4d9e4e5814535ddc40b45794c05153e43b274cee25744a3eea493da5641
+	sha256sums = 9b9047fd4c8f2de5aabfeab36cc64062d6d30564d7449a5164715f6ac1ff64d0
 
 pkgname = ignition-common-3
