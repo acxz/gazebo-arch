@@ -12,10 +12,11 @@ depends=('ignition-math>=6' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg
 makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 provides=("ignition-common=$pkgver")
-source=("https://github.com/ignitionrobotics/ign-common/archive/ignition-common3_${pkgver}.tar.gz"
-        "missing-include-cstring.patch")
+_url=https://github.com/gazebosim/gz-common
+source=("$_url/archive/ignition-common3_${pkgver}.tar.gz"
+        "missing-include-cstring.patch::$_url/commit/465bb7780e552b278de559fafaffe3d061a99782.patch")
 sha256sums=('293ff4d9e4e5814535ddc40b45794c05153e43b274cee25744a3eea493da5641'
-            '9b9047fd4c8f2de5aabfeab36cc64062d6d30564d7449a5164715f6ac1ff64d0')
+            '9a6f2d45a1c2146150336e25162f6ba46f19db1deb46b2b644a8faa3afe3d7af')
 
 _dir="gz-common-ignition-common3_${pkgver}"
 
