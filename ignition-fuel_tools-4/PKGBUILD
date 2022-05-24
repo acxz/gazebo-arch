@@ -13,7 +13,7 @@ depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common-3'
 makedepends=('ignition-cmake>=2')
 optdepends=('ruby')
 conflicts=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/ignition-fuel-tools4_${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-fuel-tools/archive/ignition-fuel-tools4_${pkgver}.tar.gz")
 sha256sums=('ad218743ac35cc71f5324a13a34959c596c1d6e5c25da52870fcbab02432939d')
 
 _dir="gz-fuel-tools-ignition-fuel-tools4_${pkgver}"
