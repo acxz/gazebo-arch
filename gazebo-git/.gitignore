@@ -2,3 +2,4 @@ gazebo*
 patch
 pkg
 src
+*.tar.gz
