@@ -30,7 +30,7 @@ conflicts=('gazebo')
 _pkgname=gazebo
 
 source=("gazebo"::"git+https://github.com/osrf/gazebo") #  "patch"::"https://github.com/osrf/gazebo/pull/3180.patch")
-sha256sums=('SKIP') #  'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
