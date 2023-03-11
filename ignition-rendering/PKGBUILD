@@ -2,13 +2,13 @@
 
 pkgname=ignition-rendering
 pkgver=7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library designed to provide an abstraction for different rendering
 engines. It offers unified APIs for creating 3D graphics applications."
 arch=('x86_64')
 url="https://gazebosim.org/libs/rendering"
 license=('Apache')
-depends=('ignition-common' 'ignition-math' 'ignition-plugin' 'ogre=1.9')
+depends=('ignition-common' 'ignition-math' 'ignition-plugin' 'ogre-next' 'eigen')
 makedepends=('cmake' 'ignition-cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-rendering/archive/gz-rendering7_${pkgver}.tar.gz")
 sha256sums=('adc48405f326a2f6762a278a0ff7f5b3d379a761d64df4642e26f821912b0f92')
