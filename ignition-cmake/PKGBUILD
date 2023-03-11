@@ -3,17 +3,22 @@
 
 pkgname=ignition-cmake
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of CMake modules that are used by the C++-based Gazebo projects."
 arch=('any')
 url="https://gazebosim.org/libs/cmake"
 license=('Apache')
 depends=('cmake' 'pkg-config' 'ruby-ronn' 'doxygen')
-source=("https://github.com/gazebosim/gz-cmake/archive/gz-cmake3_${pkgver}.tar.gz")
-sha256sums=('d211e1a5384b33968a0b755dd6bded512f3e2957d2f04766ec17b0b5114201a0')
+source=("https://github.com/gazebosim/gz-cmake/archive/gz-cmake3_${pkgver}.tar.gz"
+		find-ogre.patch)
+sha256sums=('d211e1a5384b33968a0b755dd6bded512f3e2957d2f04766ec17b0b5114201a0'
+            '3d9c2847be37fa5ad63fb4edf177cc36eefd6481741fd1ea28b505be304cc9de')
 
 _dir="gz-cmake-gz-cmake3_${pkgver}"
 
+prepare() {
+	patch $_dir/cmake/FindGzOGRE2.cmake -i find-ogre.patch
+}
 build() {
   cd "$srcdir/$_dir"
 

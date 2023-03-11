@@ -1,0 +1,13 @@
+152c152
+<   foreach (GZ_OGRE2_PROJECT_NAME "OGRE2" "OGRE-Next")
+---
+>   foreach (GZ_OGRE2_PROJECT_NAME "OGRE2" "OGRE-Next" "OGRE")
+164c164
+<     else()
+---
+>     elseif (GZ_OGRE2_PROJECT_NAME STREQUAL "OGRE-Next")
+167a168,171
+>     else()
+>       # Match ArchLinux
+>       set(OGRE2_INSTALL_PATH "OGRE")
+>       set(OGRE2LIBNAME "Ogre")
