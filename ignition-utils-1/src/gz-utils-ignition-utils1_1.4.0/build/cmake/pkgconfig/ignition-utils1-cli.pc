@@ -1,0 +1,12 @@
+prefix=${pcfiledir}/../../
+libdir=${prefix}/lib
+includedir=${prefix}/include/ignition/utils1
+
+Name: Ignition utils cli
+Description: A set of utils cli classes for robot applications
+Version: ignition-cmake2 >= 1.1 1.4.0
+Requires: 
+Requires.private: 
+Libs: -L${libdir}  
+Libs.private: 
+CFLags: -I${includedir} 

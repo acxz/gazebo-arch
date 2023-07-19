@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile doxygen_version="1.9.6">
+  <compound kind="file">
+    <name>Environment.hh</name>
+    <path>/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/include/ignition/utils/</path>
+    <filename>Environment_8hh.html</filename>
+    <namespace>ignition</namespace>
+    <namespace>ignition::utils</namespace>
+    <member kind="function">
+      <type>bool</type>
+      <name>env</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a543ba5fc566cdfff0234d0d66f39c90a</anchor>
+      <arglist>(const std::string &amp;_name, std::string &amp;_value, bool _allowEmpty=false)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setenv</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a670b86de03f942dad7214fbc1c8b345e</anchor>
+      <arglist>(const std::string &amp;_name, const std::string &amp;_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>unsetenv</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a91e0055d55a3ff478a2e6c37c74c11ef</anchor>
+      <arglist>(const std::string &amp;_name)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>ExtraTestMacros.hh</name>
+    <path>/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/include/ignition/utils/</path>
+    <filename>ExtraTestMacros_8hh.html</filename>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_TEST_DISABLED_ON_MAC</name>
+      <anchorfile>ExtraTestMacros_8hh.html</anchorfile>
+      <anchor>af4031a35928a46d262638936eccbe134</anchor>
+      <arglist>(TestName)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_TEST_DISABLED_ON_WIN32</name>
+      <anchorfile>ExtraTestMacros_8hh.html</anchorfile>
+      <anchor>a7e8ad31c2dfeaa9bcd727ab1cef61c4b</anchor>
+      <arglist>(TestName)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_TEST_ENABLED_ONLY_ON_LINUX</name>
+      <anchorfile>ExtraTestMacros_8hh.html</anchorfile>
+      <anchor>a8a34b24b87f235edbd227952e0318308</anchor>
+      <arglist>(TestName)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>ImplPtr.hh</name>
+    <path>/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/include/ignition/utils/</path>
+    <filename>ImplPtr_8hh.html</filename>
+    <includes id="SuppressWarning_8hh" name="SuppressWarning.hh" local="no" imported="no">ignition/utils/SuppressWarning.hh</includes>
+    <class kind="class">ignition::utils::ImplPtr</class>
+    <namespace>ignition</namespace>
+    <namespace>ignition::utils</namespace>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_IMPL_PTR</name>
+      <anchorfile>ImplPtr_8hh.html</anchorfile>
+      <anchor>af83832c12eb6a56fe3c642df9e3f142d</anchor>
+      <arglist>(memberName)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_IMPL_PTR_FWD</name>
+      <anchorfile>ImplPtr_8hh.html</anchorfile>
+      <anchor>a1425867f11654b25c81a8fb5a61a0d20</anchor>
+      <arglist>(ImplementationClass, memberName)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_UNIQUE_IMPL_PTR</name>
+      <anchorfile>ImplPtr_8hh.html</anchorfile>
+      <anchor>a721ee62dac1d24c200bc0b008c82a7e2</anchor>
+      <arglist>(memberName)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_UNIQUE_IMPL_PTR_FWD</name>
+      <anchorfile>ImplPtr_8hh.html</anchorfile>
+      <anchor>a02fff64705e1186106d0aa10fc0bfc03</anchor>
+      <arglist>(ImplementationClass, memberName)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>std::unique_ptr&lt; T, Deleter &gt;</type>
+      <name>UniqueImplPtr</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>adb842df6b6d488e2c946efa52f697e9d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>ImplPtr&lt; T &gt;</type>
+      <name>MakeImpl</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>ae439e27d065f3ded68283e193bcb47b8</anchor>
+      <arglist>(Args &amp;&amp;..._args)</arglist>
+    </member>
+    <member kind="function">
+      <type>UniqueImplPtr&lt; T &gt;</type>
+      <name>MakeUniqueImpl</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a37c5d18e96c9c2a42c002b685bfc4051</anchor>
+      <arglist>(Args &amp;&amp;..._args)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>NeverDestroyed.hh</name>
+    <path>/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/include/ignition/utils/</path>
+    <filename>NeverDestroyed_8hh.html</filename>
+    <class kind="class">ignition::utils::NeverDestroyed</class>
+    <namespace>ignition</namespace>
+    <namespace>ignition::utils</namespace>
+  </compound>
+  <compound kind="file">
+    <name>SuppressWarning.hh</name>
+    <path>/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/include/ignition/utils/</path>
+    <filename>SuppressWarning_8hh.html</filename>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_WARN_IGNORE__DEPRECATED_DECLARATION</name>
+      <anchorfile>SuppressWarning_8hh.html</anchorfile>
+      <anchor>a4b6c3d4b34515be892ba3be4c8793d71</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_WARN_IGNORE__DLL_INTERFACE_MISSING</name>
+      <anchorfile>SuppressWarning_8hh.html</anchorfile>
+      <anchor>a5e08a21a32ea4f695c60aea7cb00139e</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_WARN_IGNORE__NON_VIRTUAL_DESTRUCTOR</name>
+      <anchorfile>SuppressWarning_8hh.html</anchorfile>
+      <anchor>ab8a6ad833595de7036014e50b77417ff</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_WARN_RESUME__DEPRECATED_DECLARATION</name>
+      <anchorfile>SuppressWarning_8hh.html</anchorfile>
+      <anchor>a8a49258014511d23043609fa3cec5b70</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_WARN_RESUME__DLL_INTERFACE_MISSING</name>
+      <anchorfile>SuppressWarning_8hh.html</anchorfile>
+      <anchor>aebe81b4d7c895b4d487698ed3be48d5d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>IGN_UTILS_WARN_RESUME__NON_VIRTUAL_DESTRUCTOR</name>
+      <anchorfile>SuppressWarning_8hh.html</anchorfile>
+      <anchor>a13178b73380e241372b7658b668d3b89</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ignition::utils::ImplPtr</name>
+    <filename>classignition_1_1utils_1_1ImplPtr.html</filename>
+    <templarg>class T</templarg>
+    <templarg>class Deleter</templarg>
+    <templarg>class Operations</templarg>
+    <member kind="function">
+      <type></type>
+      <name>ImplPtr</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>addcfe4aba8dd36982416f6d3172e4da1</anchor>
+      <arglist>(const ImplPtr &amp;_other)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ImplPtr</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>a9bade5a369957908e448c728ea079348</anchor>
+      <arglist>(ImplPtr &amp;&amp;)=default</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>ImplPtr</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>aa05505f4469daaf8f58e313329d5b854</anchor>
+      <arglist>(U *_ptr, D &amp;&amp;_deleter, Ops &amp;&amp;_ops)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~ImplPtr</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>afc0322171814b31412cfa323b4a70027</anchor>
+      <arglist>()=default</arglist>
+    </member>
+    <member kind="function">
+      <type>T *</type>
+      <name>Get</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>aefec979b33772562126d15835c248810</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const T *</type>
+      <name>Get</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>a0b16fe56fecb8eb8dbc7612f9fec8dbc</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>T &amp;</type>
+      <name>operator*</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>a3f534efce0b043d603eb8f5653268e7d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const T &amp;</type>
+      <name>operator*</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>a241c04e3ce86e1fd5a946eb2aa8b1f22</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>T *</type>
+      <name>operator-&gt;</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>a4442b1b9eab40e7939e1e01cdedcb7ae</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const T *</type>
+      <name>operator-&gt;</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>abaade5c780b539b94de660e314cb0c90</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>ImplPtr &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>af7da839e171aebcdab91e4ffdf69c3f6</anchor>
+      <arglist>(const ImplPtr &amp;_other)</arglist>
+    </member>
+    <member kind="function">
+      <type>ImplPtr &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classignition_1_1utils_1_1ImplPtr.html</anchorfile>
+      <anchor>a317e5f1bb1669559933849a5a06159f4</anchor>
+      <arglist>(ImplPtr &amp;&amp;)=default</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ignition::utils::NeverDestroyed</name>
+    <filename>classignition_1_1utils_1_1NeverDestroyed.html</filename>
+    <templarg>typename T</templarg>
+    <member kind="function">
+      <type></type>
+      <name>NeverDestroyed</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>ae8f877c6fb1b22eed201e95750842603</anchor>
+      <arglist>(Args &amp;&amp;... args)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>NeverDestroyed</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>aa5770540dda02bb9082ed2732c3aa3a6</anchor>
+      <arglist>(const NeverDestroyed &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>NeverDestroyed</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>a9c0c849cf9415289f40f9d28f64d963a</anchor>
+      <arglist>(NeverDestroyed &amp;&amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~NeverDestroyed</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>a28ba7d91456303e8c95ac56cc905ed8d</anchor>
+      <arglist>()=default</arglist>
+    </member>
+    <member kind="function">
+      <type>T &amp;</type>
+      <name>Access</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>a06d6c44844b172d9b6365712012c444c</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>const T &amp;</type>
+      <name>Access</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>a90b6a0e763ffcfd2601484e3265f9274</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>NeverDestroyed &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>a6bf997f03b4bd7afd13cbc63fbf01b43</anchor>
+      <arglist>(const NeverDestroyed &amp;)=delete</arglist>
+    </member>
+    <member kind="function">
+      <type>NeverDestroyed &amp;</type>
+      <name>operator=</name>
+      <anchorfile>classignition_1_1utils_1_1NeverDestroyed.html</anchorfile>
+      <anchor>abcd75dfa30071307941447d1433a5a91</anchor>
+      <arglist>(NeverDestroyed &amp;&amp;) noexcept=delete</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>ignition</name>
+    <filename>namespaceignition.html</filename>
+    <namespace>ignition::utils</namespace>
+  </compound>
+  <compound kind="namespace">
+    <name>ignition::utils</name>
+    <filename>namespaceignition_1_1utils.html</filename>
+    <class kind="class">ignition::utils::ImplPtr</class>
+    <class kind="class">ignition::utils::NeverDestroyed</class>
+    <member kind="typedef">
+      <type>std::unique_ptr&lt; T, Deleter &gt;</type>
+      <name>UniqueImplPtr</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>adb842df6b6d488e2c946efa52f697e9d</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>env</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a543ba5fc566cdfff0234d0d66f39c90a</anchor>
+      <arglist>(const std::string &amp;_name, std::string &amp;_value, bool _allowEmpty=false)</arglist>
+    </member>
+    <member kind="function">
+      <type>ImplPtr&lt; T &gt;</type>
+      <name>MakeImpl</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>ae439e27d065f3ded68283e193bcb47b8</anchor>
+      <arglist>(Args &amp;&amp;..._args)</arglist>
+    </member>
+    <member kind="function">
+      <type>UniqueImplPtr&lt; T &gt;</type>
+      <name>MakeUniqueImpl</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a37c5d18e96c9c2a42c002b685bfc4051</anchor>
+      <arglist>(Args &amp;&amp;..._args)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>setenv</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a670b86de03f942dad7214fbc1c8b345e</anchor>
+      <arglist>(const std::string &amp;_name, const std::string &amp;_value)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>unsetenv</name>
+      <anchorfile>namespaceignition_1_1utils.html</anchorfile>
+      <anchor>a91e0055d55a3ff478a2e6c37c74c11ef</anchor>
+      <arglist>(const std::string &amp;_name)</arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>std</name>
+    <filename>namespacestd.html</filename>
+  </compound>
+</tagfile>

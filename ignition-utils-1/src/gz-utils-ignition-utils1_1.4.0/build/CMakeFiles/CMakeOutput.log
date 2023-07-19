@@ -1,0 +1,688 @@
+The system is: Linux - 6.2.5-arch1-1 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /sbin/cc 
+Build flags: -march=x86-64;-mtune=generic;-O2;-pipe;-fno-plt;-fexceptions;;;;;;;;;-Wp,-D_FORTIFY_SOURCE=2;-Wformat;-Werror=format-security;;;;;;;;;-fstack-clash-protection;-fcf-protection
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/3.25.3/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /sbin/c++ 
+Build flags: -march=x86-64;-mtune=generic;-O2;-pipe;-fno-plt;-fexceptions;;;;;;;;;-Wp,-D_FORTIFY_SOURCE=2;-Wformat;-Werror=format-security;;;;;;;;;-fstack-clash-protection;-fcf-protection;-Wp,-D_GLIBCXX_ASSERTIONS
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/3.25.3/CompilerIdCXX/a.out"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-DaNMJz
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_a3c17/fast && /sbin/make  -f CMakeFiles/cmTC_a3c17.dir/build.make CMakeFiles/cmTC_a3c17.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-DaNMJz'
+Building C object CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o
+/sbin/cc   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection    -v -o CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/sbin/cc
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.1 20230201 (GCC) 
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_a3c17.dir/'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/cc1 -quiet -v -D_FORTIFY_SOURCE=2 /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_a3c17.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=x86-64 -mtune=generic -O2 -Wformat=1 -version -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -o - |
+ as -v --64 -o CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o
+GNU assembler version 2.40 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40
+GNU C17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 12.2.1 20230201, GMP version 6.2.1, MPFR version 4.2.0, MPC version 1.3.1, isl version isl-0.25-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../x86_64-pc-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed
+ /usr/include
+End of search list.
+GNU C17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 12.2.1 20230201, GMP version 6.2.1, MPFR version 4.2.0, MPC version 1.3.1, isl version isl-0.25-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 99df1fbb4c4d7eeb8d93f0979bfab9ce
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_a3c17
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3c17.dir/link.txt --verbose=1
+/sbin/cc -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -v CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o -o cmTC_a3c17 
+Using built-in specs.
+COLLECT_GCC=/sbin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.1 20230201 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'cmTC_a3c17' '-dumpdir' 'cmTC_a3c17.'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccs7H743.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_a3c17 /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../.. -O1 --sort-common --as-needed -z relro -z now CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'cmTC_a3c17' '-dumpdir' 'cmTC_a3c17.'
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-DaNMJz'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include]
+    add: [/usr/local/include]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-DaNMJz]
+  ignore line: []
+  ignore line: [Run Build Command(s):/sbin/make -f Makefile cmTC_a3c17/fast && /sbin/make  -f CMakeFiles/cmTC_a3c17.dir/build.make CMakeFiles/cmTC_a3c17.dir/build]
+  ignore line: [make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-DaNMJz']
+  ignore line: [Building C object CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/sbin/cc   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp -D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection    -v -o CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/sbin/cc]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=c c++ ada fortran go lto objc obj-c++ d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.1 20230201 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_a3c17.dir/']
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/cc1 -quiet -v -D_FORTIFY_SOURCE=2 /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_a3c17.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=x86-64 -mtune=generic -O2 -Wformat=1 -version -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -o - |]
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o]
+  ignore line: [GNU assembler version 2.40 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40]
+  ignore line: [GNU C17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 12.2.1 20230201  GMP version 6.2.1  MPFR version 4.2.0  MPC version 1.3.1  isl version isl-0.25-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 12.2.1 20230201  GMP version 6.2.1  MPFR version 4.2.0  MPC version 1.3.1  isl version isl-0.25-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 99df1fbb4c4d7eeb8d93f0979bfab9ce]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_a3c17]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3c17.dir/link.txt --verbose=1]
+  ignore line: [/sbin/cc -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp -D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection  -Wl -O1 --sort-common --as-needed -z relro -z now -v CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o -o cmTC_a3c17 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/sbin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=c c++ ada fortran go lto objc obj-c++ d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.1 20230201 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'cmTC_a3c17' '-dumpdir' 'cmTC_a3c17.']
+  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccs7H743.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_a3c17 /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../.. -O1 --sort-common --as-needed -z relro -z now CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccs7H743.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_a3c17] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../..]
+    arg [-O1] ==> ignore
+    arg [--sort-common] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-znow] ==> ignore
+    arg [CMakeFiles/cmTC_a3c17.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o]
+  collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o] ==> [/usr/lib/Scrt1.o]
+  collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o] ==> [/usr/lib/crti.o]
+  collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o] ==> [/usr/lib/crtn.o]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../..] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/usr/lib/Scrt1.o;/usr/lib/crti.o;/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o;/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o;/usr/lib/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1;/usr/lib;/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-q1XobK
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_eb7da/fast && /sbin/make  -f CMakeFiles/cmTC_eb7da.dir/build.make CMakeFiles/cmTC_eb7da.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-q1XobK'
+Building CXX object CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -v -o CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/sbin/c++
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.1 20230201 (GCC) 
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-dumpdir' 'CMakeFiles/cmTC_eb7da.dir/'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/cc1plus -quiet -v -D_GNU_SOURCE -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_eb7da.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=x86-64 -mtune=generic -O2 -Wformat=1 -version -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -o - |
+ as -v --64 -o CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o
+GNU assembler version 2.40 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40
+GNU C++17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 12.2.1 20230201, GMP version 6.2.1, MPFR version 4.2.0, MPC version 1.3.1, isl version isl-0.25-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../x86_64-pc-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/x86_64-pc-linux-gnu
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/backward
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed
+ /usr/include
+End of search list.
+GNU C++17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 12.2.1 20230201, GMP version 6.2.1, MPFR version 4.2.0, MPC version 1.3.1, isl version isl-0.25-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: ab2adc4aa87e9c5b6e6cb24c55e663d5
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-dumpdir' 'CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_eb7da
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eb7da.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -v CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_eb7da 
+Using built-in specs.
+COLLECT_GCC=/sbin/c++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: /build/gcc/src/gcc/configure --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.1 20230201 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'cmTC_eb7da' '-shared-libgcc' '-dumpdir' 'cmTC_eb7da.'
+ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJNEYqS.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_eb7da /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../.. -O1 --sort-common --as-needed -z relro -z now CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o
+COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'cmTC_eb7da' '-shared-libgcc' '-dumpdir' 'cmTC_eb7da.'
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-q1XobK'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/x86_64-pc-linux-gnu]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/backward]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include]
+    add: [/usr/local/include]
+    add: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1] ==> [/usr/include/c++/12.2.1]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/x86_64-pc-linux-gnu] ==> [/usr/include/c++/12.2.1/x86_64-pc-linux-gnu]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/backward] ==> [/usr/include/c++/12.2.1/backward]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/include/c++/12.2.1;/usr/include/c++/12.2.1/x86_64-pc-linux-gnu;/usr/include/c++/12.2.1/backward;/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include;/usr/local/include;/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-q1XobK]
+  ignore line: []
+  ignore line: [Run Build Command(s):/sbin/make -f Makefile cmTC_eb7da/fast && /sbin/make  -f CMakeFiles/cmTC_eb7da.dir/build.make CMakeFiles/cmTC_eb7da.dir/build]
+  ignore line: [make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-q1XobK']
+  ignore line: [Building CXX object CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp -D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection -Wp -D_GLIBCXX_ASSERTIONS    -v -o CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/sbin/c++]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=c c++ ada fortran go lto objc obj-c++ d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.1 20230201 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-dumpdir' 'CMakeFiles/cmTC_eb7da.dir/']
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/cc1plus -quiet -v -D_GNU_SOURCE -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_eb7da.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -march=x86-64 -mtune=generic -O2 -Wformat=1 -version -fno-plt -fexceptions -fstack-clash-protection -fcf-protection=full -o - |]
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [GNU assembler version 2.40 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40]
+  ignore line: [GNU C++17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 12.2.1 20230201  GMP version 6.2.1  MPFR version 4.2.0  MPC version 1.3.1  isl version isl-0.25-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/x86_64-pc-linux-gnu]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../include/c++/12.2.1/backward]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (GCC) version 12.2.1 20230201 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 12.2.1 20230201  GMP version 6.2.1  MPFR version 4.2.0  MPC version 1.3.1  isl version isl-0.25-GMP]
+  ignore line: []
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: ab2adc4aa87e9c5b6e6cb24c55e663d5]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-dumpdir' 'CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_eb7da]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eb7da.dir/link.txt --verbose=1]
+  ignore line: [/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp -D_FORTIFY_SOURCE=2 -Wformat         -fstack-clash-protection -fcf-protection -Wp -D_GLIBCXX_ASSERTIONS  -Wl -O1 --sort-common --as-needed -z relro -z now -v CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_eb7da ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/sbin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: /build/gcc/src/gcc/configure --enable-languages=c c++ ada fortran go lto objc obj-c++ d --enable-bootstrap --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=https://bugs.archlinux.org/ --with-build-config=bootstrap-lto --with-linker-hash-style=gnu --with-system-zlib --enable-__cxa_atexit --enable-cet=auto --enable-checking=release --enable-clocale=gnu --enable-default-pie --enable-default-ssp --enable-gnu-indirect-function --enable-gnu-unique-object --enable-libstdcxx-backtrace --enable-link-serialization=1 --enable-linker-build-id --enable-lto --enable-multilib --enable-plugin --enable-shared --enable-threads=posix --disable-libssp --disable-libstdcxx-pch --disable-werror]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.1 20230201 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=x86-64' '-mtune=generic' '-O2' '-pipe' '-fno-plt' '-fexceptions' '-Wformat=1' '-fstack-clash-protection' '-fcf-protection=full' '-v' '-o' 'cmTC_eb7da' '-shared-libgcc' '-dumpdir' 'cmTC_eb7da.']
+  link line: [ /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/collect2 -plugin /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJNEYqS.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_eb7da /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1 -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../.. -O1 --sort-common --as-needed -z relro -z now CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccJNEYqS.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_eb7da] ==> ignore
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../..] ==> dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../..]
+    arg [-O1] ==> ignore
+    arg [--sort-common] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-znow] ==> ignore
+    arg [CMakeFiles/cmTC_eb7da.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o]
+    arg [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o] ==> obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o]
+  collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/Scrt1.o] ==> [/usr/lib/Scrt1.o]
+  collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crti.o] ==> [/usr/lib/crti.o]
+  collapse obj [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib/crtn.o] ==> [/usr/lib/crtn.o]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1] ==> [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/usr/lib/Scrt1.o;/usr/lib/crti.o;/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtbeginS.o;/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1/crtendS.o;/usr/lib/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.1;/usr/lib;/lib]
+  implicit fwks: []
+
+
+Performing C++ SOURCE FILE Test result-Wall succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-BPBVf3
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_ece3b/fast && /sbin/make  -f CMakeFiles/cmTC_ece3b.dir/build.make CMakeFiles/cmTC_ece3b.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-BPBVf3'
+Building CXX object CMakeFiles/cmTC_ece3b.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wall -Wall -o CMakeFiles/cmTC_ece3b.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-BPBVf3/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_ece3b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ece3b.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_ece3b.dir/src.cxx.o -o cmTC_ece3b 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-BPBVf3'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Wextra succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-aCdMst
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_6167d/fast && /sbin/make  -f CMakeFiles/cmTC_6167d.dir/build.make CMakeFiles/cmTC_6167d.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-aCdMst'
+Building CXX object CMakeFiles/cmTC_6167d.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wextra -Wextra -o CMakeFiles/cmTC_6167d.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-aCdMst/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_6167d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6167d.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_6167d.dir/src.cxx.o -o cmTC_6167d 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-aCdMst'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Wno-long-long succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-y26ZWg
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_3bf88/fast && /sbin/make  -f CMakeFiles/cmTC_3bf88.dir/build.make CMakeFiles/cmTC_3bf88.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-y26ZWg'
+Building CXX object CMakeFiles/cmTC_3bf88.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wno-long-long -Wno-long-long -o CMakeFiles/cmTC_3bf88.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-y26ZWg/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_3bf88
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3bf88.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_3bf88.dir/src.cxx.o -o cmTC_3bf88 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-y26ZWg'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Wno-unused-value succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-59YK6w
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_e16f1/fast && /sbin/make  -f CMakeFiles/cmTC_e16f1.dir/build.make CMakeFiles/cmTC_e16f1.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-59YK6w'
+Building CXX object CMakeFiles/cmTC_e16f1.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wno-unused-value -Wno-unused-value -o CMakeFiles/cmTC_e16f1.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-59YK6w/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_e16f1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e16f1.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_e16f1.dir/src.cxx.o -o cmTC_e16f1 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-59YK6w'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Wfloat-equal succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-MzFRpm
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_d2d7b/fast && /sbin/make  -f CMakeFiles/cmTC_d2d7b.dir/build.make CMakeFiles/cmTC_d2d7b.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-MzFRpm'
+Building CXX object CMakeFiles/cmTC_d2d7b.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wfloat-equal -Wfloat-equal -o CMakeFiles/cmTC_d2d7b.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-MzFRpm/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_d2d7b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2d7b.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_d2d7b.dir/src.cxx.o -o cmTC_d2d7b 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-MzFRpm'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Wshadow succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-xhCURj
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_63c87/fast && /sbin/make  -f CMakeFiles/cmTC_63c87.dir/build.make CMakeFiles/cmTC_63c87.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-xhCURj'
+Building CXX object CMakeFiles/cmTC_63c87.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wshadow -Wshadow -o CMakeFiles/cmTC_63c87.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-xhCURj/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_63c87
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63c87.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_63c87.dir/src.cxx.o -o cmTC_63c87 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-xhCURj'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Winit-self succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-G3KqJG
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_6bab3/fast && /sbin/make  -f CMakeFiles/cmTC_6bab3.dir/build.make CMakeFiles/cmTC_6bab3.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-G3KqJG'
+Building CXX object CMakeFiles/cmTC_6bab3.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Winit-self -Winit-self -o CMakeFiles/cmTC_6bab3.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-G3KqJG/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_6bab3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6bab3.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_6bab3.dir/src.cxx.o -o cmTC_6bab3 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-G3KqJG'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Wswitch-default succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-M46bXK
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_d2260/fast && /sbin/make  -f CMakeFiles/cmTC_d2260.dir/build.make CMakeFiles/cmTC_d2260.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-M46bXK'
+Building CXX object CMakeFiles/cmTC_d2260.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wswitch-default -Wswitch-default -o CMakeFiles/cmTC_d2260.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-M46bXK/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_d2260
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2260.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_d2260.dir/src.cxx.o -o cmTC_d2260 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-M46bXK'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-Wmissing-include-dirs succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-gMjJ8p
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_5472f/fast && /sbin/make  -f CMakeFiles/cmTC_5472f.dir/build.make CMakeFiles/cmTC_5472f.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-gMjJ8p'
+Building CXX object CMakeFiles/cmTC_5472f.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-Wmissing-include-dirs -Wmissing-include-dirs -o CMakeFiles/cmTC_5472f.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-gMjJ8p/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_5472f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5472f.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_5472f.dir/src.cxx.o -o cmTC_5472f 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-gMjJ8p'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-pedantic succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-H5Aup9
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_73885/fast && /sbin/make  -f CMakeFiles/cmTC_73885.dir/build.make CMakeFiles/cmTC_73885.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-H5Aup9'
+Building CXX object CMakeFiles/cmTC_73885.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-pedantic -pedantic -o CMakeFiles/cmTC_73885.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-H5Aup9/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_73885
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_73885.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_73885.dir/src.cxx.o -o cmTC_73885 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-H5Aup9'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-fno-elide-constructors succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-hGrJSc
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_5288b/fast && /sbin/make  -f CMakeFiles/cmTC_5288b.dir/build.make CMakeFiles/cmTC_5288b.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-hGrJSc'
+Building CXX object CMakeFiles/cmTC_5288b.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-fno-elide-constructors -fno-elide-constructors -o CMakeFiles/cmTC_5288b.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-hGrJSc/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_5288b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5288b.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_5288b.dir/src.cxx.o -o cmTC_5288b 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-hGrJSc'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-fno-default-inline succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-oIDFjq
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_e860f/fast && /sbin/make  -f CMakeFiles/cmTC_e860f.dir/build.make CMakeFiles/cmTC_e860f.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-oIDFjq'
+Building CXX object CMakeFiles/cmTC_e860f.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-fno-default-inline -fno-default-inline -o CMakeFiles/cmTC_e860f.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-oIDFjq/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_e860f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e860f.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_e860f.dir/src.cxx.o -o cmTC_e860f 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-oIDFjq'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test result-fno-implicit-inline-templates succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-jRskTJ
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_63a3c/fast && /sbin/make  -f CMakeFiles/cmTC_63a3c.dir/build.make CMakeFiles/cmTC_63a3c.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-jRskTJ'
+Building CXX object CMakeFiles/cmTC_63a3c.dir/src.cxx.o
+/sbin/c++   -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -Dresult-fno-implicit-inline-templates -fno-implicit-inline-templates -o CMakeFiles/cmTC_63a3c.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-jRskTJ/src.cxx
+<command-line>: warning: ISO C++11 requires whitespace after the macro name
+Linking CXX executable cmTC_63a3c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_63a3c.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_63a3c.dir/src.cxx.o -o cmTC_63a3c 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-jRskTJ'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test COMPILER_HAS_HIDDEN_VISIBILITY succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-qlCWJa
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_94069/fast && /sbin/make  -f CMakeFiles/cmTC_94069.dir/build.make CMakeFiles/cmTC_94069.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-qlCWJa'
+Building CXX object CMakeFiles/cmTC_94069.dir/src.cxx.o
+/sbin/c++ -DCOMPILER_HAS_HIDDEN_VISIBILITY  -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -fvisibility=hidden -o CMakeFiles/cmTC_94069.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-qlCWJa/src.cxx
+Linking CXX executable cmTC_94069
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_94069.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_94069.dir/src.cxx.o -o cmTC_94069 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-qlCWJa'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-z0Dmh0
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_24302/fast && /sbin/make  -f CMakeFiles/cmTC_24302.dir/build.make CMakeFiles/cmTC_24302.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-z0Dmh0'
+Building CXX object CMakeFiles/cmTC_24302.dir/src.cxx.o
+/sbin/c++ -DCOMPILER_HAS_HIDDEN_INLINE_VISIBILITY  -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS    -fvisibility-inlines-hidden -o CMakeFiles/cmTC_24302.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-z0Dmh0/src.cxx
+Linking CXX executable cmTC_24302
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24302.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_24302.dir/src.cxx.o -o cmTC_24302 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-z0Dmh0'
+
+
+Source file was:
+int main() { return 0; }
+
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED_ATTR succeeded with the following output:
+Change Dir: /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-72ZjEh
+
+Run Build Command(s):/sbin/make -f Makefile cmTC_9ee16/fast && /sbin/make  -f CMakeFiles/cmTC_9ee16.dir/build.make CMakeFiles/cmTC_9ee16.dir/build
+make[1]: Entering directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-72ZjEh'
+Building CXX object CMakeFiles/cmTC_9ee16.dir/src.cxx.o
+/sbin/c++ -DCOMPILER_HAS_DEPRECATED_ATTR  -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -o CMakeFiles/cmTC_9ee16.dir/src.cxx.o -c /home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-72ZjEh/src.cxx
+/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-72ZjEh/src.cxx: In function ‘int main()’:
+/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-72ZjEh/src.cxx:2:33: warning: ‘int somefunc()’ is deprecated [-Wdeprecated-declarations]
+    2 |     int main() { return somefunc();}
+      |                         ~~~~~~~~^~
+/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-72ZjEh/src.cxx:1:37: note: declared here
+    1 | __attribute__((__deprecated__)) int somefunc() { return 0; }
+      |                                     ^~~~~~~~
+Linking CXX executable cmTC_9ee16
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9ee16.dir/link.txt --verbose=1
+/sbin/c++ -march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS  -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now  CMakeFiles/cmTC_9ee16.dir/src.cxx.o -o cmTC_9ee16 
+make[1]: Leaving directory '/home/bernd/Desktop/GithubProjects/gazebo-arch/ignition-utils-1/src/gz-utils-ignition-utils1_1.4.0/build/CMakeFiles/CMakeScratch/TryCompile-72ZjEh'
+
+
+Source file was:
+__attribute__((__deprecated__)) int somefunc() { return 0; }
+    int main() { return somefunc();}
+

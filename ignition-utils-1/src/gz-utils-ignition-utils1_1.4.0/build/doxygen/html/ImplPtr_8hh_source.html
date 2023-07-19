@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <meta name="keywords" content="Gazebo Utils">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gazebo Utils: ImplPtr.hh Source File</title>
+    <script type="text/javascript" src="https://gazebosim.org/assets/doxygen/dynsections.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://gazebosim.org/assets/icon/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_orange-blue.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+    <link href="https://gazebosim.org/assets/doxygen/doxygen.css" rel="stylesheet" type="text/css">
+  </head>
+    <script type="text/javascript">
+      /* Replace all the "permalink" &#9670;&nbsp; icons with a unicode link
+        symbol.*/
+      $(document).ready(function() {
+        var elems = document.getElementsByClassName("permalink");
+        for (var i = 0; i < elems.length; ++i) {
+          elems[i].firstChild.innerHTML="&#x1f517;";
+          elems[i].firstChild.style.fontSize="18px";
+        }
+      });
+    </script>
+  </head>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+    <div class="mdl-layout__drawer mdl-color--grey-100 mdl-color-text--blue-grey-50">
+      <header class="mdl-color--grey-100">
+        <a href="index.html"><img width="60px" src="https://gazebosim.org/assets/doxygen/gazebo_logo.svg"/></a>
+        <h1 class="project_title">Gazebo Utils</h1>
+        <h2>API Reference</h2>
+        <div class="version">
+        1.4.0
+        </div>
+      </header>
+      <!-- NOTE: If you add a link to a doxygen generated page, then make
+                 sure to update the required_html_fils list in
+                 IgnCreateDocs.cmake -->
+      <nav class="ign-navigation mdl-navigation">
+        <a class="mdl-navigation__link" href="tutorials.html">
+          <i class="mdl-color-text--grey-400 material-icons"
+             role="presentation">insert_drive_file</i>Tutorials</a>
+        <a id="class_menu" class="mdl-navigation__link" href="#">
+          <i class="mdl-color-text--grey-400 material-icons"
+             role="presentation">library_books</i>Classes</a>
+        <a id="namespaces_menu"class="mdl-navigation__link" href="#">
+          <i class="mdl-color-text--grey-400 material-icons"
+             role="presentation">toc</i>Namespaces</a>
+        <a class="mdl-navigation__link" href="files.html">
+          <i class="mdl-color-text--grey-400 material-icons"
+             role="presentation">insert_drive_file</i>Files</a>
+        <a class="mdl-navigation__link" target="_blank"
+           href="http://gazebosim.org">
+          <i class="mdl-color-text--grey-400 material-icons"
+             role="presentation">launch</i>Gazebo Website</a>
+      </nav>
+      <!-- classes sub menu -->
+      <ul for="class_menu" class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect mdl-navigation">
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link" href="classes.html">Index</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="annotated.html">List</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+             href="hierarchy.html">Hierarchy</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+             href="functions.html">Members: All</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+             href="functions_func.html">Members: Functions</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+             href="functions_vars.html">Members: Variables</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+             href="functions_type.html">Members: Typedefs</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+             href="functions_enum.html">Members: Enumerations</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+             href="functions_eval.html">Members: Enumerator</a>
+        </li>
+      </ul>
+      <!-- namespaces sub menu -->
+      <ul for="namespaces_menu" class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect mdl-navigation">
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="namespaces.html">List</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="namespacemembers.html">Members</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="namespacemembers_func.html">Functions</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="namespacemembers_type.html">Typedefs</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="namespacemembers_vars.html">Variables</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="namespacemembers_enum.html">Enumerations</a>
+        </li>
+        <li class="mdl-menu__item">
+          <a class="mdl-navigation__link"
+            href="namespacemembers_eval.html">Enumerator</a>
+        </li>
+      </ul>
+    </div>
+    <main class="mdl-layout__content mdl-color--white">
+    <div id="top">
+<!-- Generated by Doxygen 1.9.6 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c8226afb09aa10271a8949730715fb5f.html">ignition</a></li><li class="navelem"><a class="el" href="dir_b076f118d1b4218824079594c02e6477.html">utils</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ImplPtr.hh</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ImplPtr_8hh.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright (C) 2018 Open Source Robotics Foundation</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * limitations under the License.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef IGNITION_UTILS__IMPLPTR_HH_</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define IGNITION_UTILS__IMPLPTR_HH_</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;ignition/utils/detail/DefaultOps.hh&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;<a class="code" href="SuppressWarning_8hh.html">ignition/utils/SuppressWarning.hh</a>&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;ignition/utils/Export.hh&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceignition.html">ignition</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  <span class="keyword">namespace </span>utils</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keyword">template</span> &lt;<span class="keyword">class </span>T,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>              <span class="keyword">class </span>Deleter = void (*)(T*),</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>              <span class="keyword">class</span> Operations = detail::CopyMoveDeleteOperations&lt;T&gt; &gt;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html">   74</a></span>    <span class="keyword">class</span> <a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>      <span class="keyword">public</span>: <span class="keyword">template</span> &lt;<span class="keyword">class</span> U, <span class="keyword">class</span> D, <span class="keyword">class</span> Ops&gt;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#aa05505f4469daaf8f58e313329d5b854">   85</a></span>      <a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#aa05505f4469daaf8f58e313329d5b854">ImplPtr</a>(U *_ptr, D &amp;&amp;_deleter, Ops &amp;&amp;_ops);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#addcfe4aba8dd36982416f6d3172e4da1">   89</a></span>      <span class="keyword">public</span>: <a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#addcfe4aba8dd36982416f6d3172e4da1">ImplPtr</a>(<span class="keyword">const</span> <a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a> &amp;_other);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#af7da839e171aebcdab91e4ffdf69c3f6">   94</a></span>      <span class="keyword">public</span>: <a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a> &amp;<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#af7da839e171aebcdab91e4ffdf69c3f6">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a> &amp;_other);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>      <span class="comment">// We explicitly declare the move constructor to make it clear that it is</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      <span class="comment">// available.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#a9bade5a369957908e448c728ea079348">   98</a></span>      <span class="keyword">public</span>: <a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#a9bade5a369957908e448c728ea079348">ImplPtr</a>(<a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a> &amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      <span class="comment">// We explicitly declare the move assignment operator to make it clear</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="comment">// that it is available.</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#a317e5f1bb1669559933849a5a06159f4">  102</a></span>      <span class="keyword">public</span>: <a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a> &amp;<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#a317e5f1bb1669559933849a5a06159f4">operator=</a>(<a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a> &amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#afc0322171814b31412cfa323b4a70027">  105</a></span>      <span class="keyword">public</span>: <a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#afc0322171814b31412cfa323b4a70027">~ImplPtr</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#a3f534efce0b043d603eb8f5653268e7d">  111</a></span>      <span class="keyword">public</span>: T &amp;<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#a3f534efce0b043d603eb8f5653268e7d">operator*</a>();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#a241c04e3ce86e1fd5a946eb2aa8b1f22">  117</a></span>      <span class="keyword">public</span>: <span class="keyword">const</span> T &amp;<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#a241c04e3ce86e1fd5a946eb2aa8b1f22">operator*</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#a4442b1b9eab40e7939e1e01cdedcb7ae">  123</a></span>      <span class="keyword">public</span>: T *<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#a4442b1b9eab40e7939e1e01cdedcb7ae">operator-&gt;</a>();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#abaade5c780b539b94de660e314cb0c90">  129</a></span>      <span class="keyword">public</span>: <span class="keyword">const</span> T *<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#abaade5c780b539b94de660e314cb0c90">operator-&gt;</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#aefec979b33772562126d15835c248810">  135</a></span>      <span class="keyword">public</span>: T *<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#aefec979b33772562126d15835c248810">Get</a>();</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classignition_1_1utils_1_1ImplPtr.html#a0b16fe56fecb8eb8dbc7612f9fec8dbc">  141</a></span>      <span class="keyword">public</span>: <span class="keyword">const</span> T *<a class="code hl_function" href="classignition_1_1utils_1_1ImplPtr.html#a0b16fe56fecb8eb8dbc7612f9fec8dbc">Get</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      <span class="keyword">private</span>: <a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr</a> Clone() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      <span class="keyword">private</span>: <a class="code hl_classRef" href="http://en.cppreference.com/w/cpp/memory/unique_ptr.html">std::unique_ptr&lt;T, Deleter&gt;</a> ptr;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="keyword">private</span>: Operations ops;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    };</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="namespaceignition_1_1utils.html#ae439e27d065f3ded68283e193bcb47b8">  184</a></span>    <a class="code hl_class" href="classignition_1_1utils_1_1ImplPtr.html">ImplPtr&lt;T&gt;</a> <a class="code hl_function" href="namespaceignition_1_1utils.html#ae439e27d065f3ded68283e193bcb47b8">MakeImpl</a>(Args &amp;&amp;..._args);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> Deleter = <span class="keywordtype">void</span> (*)(T*)&gt;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="namespaceignition_1_1utils.html#adb842df6b6d488e2c946efa52f697e9d">  201</a></span>    <span class="keyword">using </span><a class="code hl_classRef" href="http://en.cppreference.com/w/cpp/memory/unique_ptr.html">UniqueImplPtr</a> = <a class="code hl_classRef" href="http://en.cppreference.com/w/cpp/memory/unique_ptr.html">std::unique_ptr&lt;T, Deleter&gt;</a>;</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno"><a class="line" href="namespaceignition_1_1utils.html#a37c5d18e96c9c2a42c002b685bfc4051">  227</a></span>    <a class="code hl_classRef" href="http://en.cppreference.com/w/cpp/memory/unique_ptr.html">UniqueImplPtr&lt;T&gt;</a> <a class="code hl_function" href="namespaceignition_1_1utils.html#a37c5d18e96c9c2a42c002b685bfc4051">MakeUniqueImpl</a>(Args &amp;&amp;..._args);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>  }  <span class="comment">// namespace utils</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>}  <span class="comment">// namespace ignition</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="ImplPtr_8hh.html#a1425867f11654b25c81a8fb5a61a0d20">  233</a></span><span class="preprocessor">#define IGN_UTILS_IMPL_PTR_FWD(ImplementationClass, memberName) \</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">  IGN_UTILS_WARN_IGNORE__DLL_INTERFACE_MISSING \</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">  private: ::ignition::utils::ImplPtr&lt;ImplementationClass&gt; memberName; \</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">  IGN_UTILS_WARN_RESUME__DLL_INTERFACE_MISSING</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="ImplPtr_8hh.html#a02fff64705e1186106d0aa10fc0bfc03">  240</a></span><span class="preprocessor">#define IGN_UTILS_UNIQUE_IMPL_PTR_FWD(ImplementationClass, memberName) \</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="preprocessor">  IGN_UTILS_WARN_IGNORE__DLL_INTERFACE_MISSING \</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="preprocessor">  private: ::ignition::utils::UniqueImplPtr&lt;ImplementationClass&gt; memberName; \</span></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="preprocessor">  IGN_UTILS_WARN_RESUME__DLL_INTERFACE_MISSING</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="ImplPtr_8hh.html#af83832c12eb6a56fe3c642df9e3f142d">  247</a></span><span class="preprocessor">#define IGN_UTILS_IMPL_PTR(memberName) \</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">  public: class Implementation; \</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">  IGN_UTILS_IMPL_PTR_FWD(Implementation, memberName)</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="ImplPtr_8hh.html#a721ee62dac1d24c200bc0b008c82a7e2">  253</a></span><span class="preprocessor">#define IGN_UTILS_UNIQUE_IMPL_PTR(memberName) \</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">  public: class Implementation; \</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">  IGN_UTILS_UNIQUE_IMPL_PTR_FWD(Implementation, memberName)</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#include &lt;ignition/utils/detail/ImplPtr.hh&gt;</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#endif  </span><span class="comment">// IGNITION_UTILS__IMPLPTR_HH_</span></div>
+<div class="ttc" id="aSuppressWarning_8hh_html"><div class="ttname"><a href="SuppressWarning_8hh.html">SuppressWarning.hh</a></div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html">ignition::utils::ImplPtr</a></div><div class="ttdoc">The ImplPtr class provides a convenient away to achieve the Rule of Zero while keeping all the benefi...</div><div class="ttdef"><b>Definition:</b> ImplPtr.hh:75</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_a0b16fe56fecb8eb8dbc7612f9fec8dbc"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#a0b16fe56fecb8eb8dbc7612f9fec8dbc">ignition::utils::ImplPtr::Get</a></div><div class="ttdeci">const T * Get() const</div><div class="ttdoc">Const member access function. This const-qualified operator ensures that logical const-correctness is...</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_a241c04e3ce86e1fd5a946eb2aa8b1f22"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#a241c04e3ce86e1fd5a946eb2aa8b1f22">ignition::utils::ImplPtr::operator*</a></div><div class="ttdeci">const T &amp; operator*() const</div><div class="ttdoc">Const dereference operator. This const-qualified operator ensures that logical const-correctness is f...</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_a317e5f1bb1669559933849a5a06159f4"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#a317e5f1bb1669559933849a5a06159f4">ignition::utils::ImplPtr::operator=</a></div><div class="ttdeci">ImplPtr &amp; operator=(ImplPtr &amp;&amp;)=default</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_a3f534efce0b043d603eb8f5653268e7d"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#a3f534efce0b043d603eb8f5653268e7d">ignition::utils::ImplPtr::operator*</a></div><div class="ttdeci">T &amp; operator*()</div><div class="ttdoc">Non-const dereference operator. This const-unqualified operator ensures that logical const-correctnes...</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_a4442b1b9eab40e7939e1e01cdedcb7ae"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#a4442b1b9eab40e7939e1e01cdedcb7ae">ignition::utils::ImplPtr::operator-&gt;</a></div><div class="ttdeci">T * operator-&gt;()</div><div class="ttdoc">Non-const member access operator. This const-unqualified operator ensures that logical const-correctn...</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_a9bade5a369957908e448c728ea079348"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#a9bade5a369957908e448c728ea079348">ignition::utils::ImplPtr::ImplPtr</a></div><div class="ttdeci">ImplPtr(ImplPtr &amp;&amp;)=default</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_aa05505f4469daaf8f58e313329d5b854"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#aa05505f4469daaf8f58e313329d5b854">ignition::utils::ImplPtr::ImplPtr</a></div><div class="ttdeci">ImplPtr(U *_ptr, D &amp;&amp;_deleter, Ops &amp;&amp;_ops)</div><div class="ttdoc">Constructor.</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_abaade5c780b539b94de660e314cb0c90"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#abaade5c780b539b94de660e314cb0c90">ignition::utils::ImplPtr::operator-&gt;</a></div><div class="ttdeci">const T * operator-&gt;() const</div><div class="ttdoc">Const member access operator. This const-qualified operator ensures that logical const-correctness is...</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_addcfe4aba8dd36982416f6d3172e4da1"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#addcfe4aba8dd36982416f6d3172e4da1">ignition::utils::ImplPtr::ImplPtr</a></div><div class="ttdeci">ImplPtr(const ImplPtr &amp;_other)</div><div class="ttdoc">Copy constructor.</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_aefec979b33772562126d15835c248810"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#aefec979b33772562126d15835c248810">ignition::utils::ImplPtr::Get</a></div><div class="ttdeci">T * Get()</div><div class="ttdoc">Non-const member access function. This const-unqualified operator ensures that logical const-correctn...</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_af7da839e171aebcdab91e4ffdf69c3f6"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#af7da839e171aebcdab91e4ffdf69c3f6">ignition::utils::ImplPtr::operator=</a></div><div class="ttdeci">ImplPtr &amp; operator=(const ImplPtr &amp;_other)</div><div class="ttdoc">Copy assignment operator.</div></div>
+<div class="ttc" id="aclassignition_1_1utils_1_1ImplPtr_html_afc0322171814b31412cfa323b4a70027"><div class="ttname"><a href="classignition_1_1utils_1_1ImplPtr.html#afc0322171814b31412cfa323b4a70027">ignition::utils::ImplPtr::~ImplPtr</a></div><div class="ttdeci">~ImplPtr()=default</div><div class="ttdoc">Destructor.</div></div>
+<div class="ttc" id="anamespaceignition_1_1utils_html_a37c5d18e96c9c2a42c002b685bfc4051"><div class="ttname"><a href="namespaceignition_1_1utils.html#a37c5d18e96c9c2a42c002b685bfc4051">ignition::utils::MakeUniqueImpl</a></div><div class="ttdeci">UniqueImplPtr&lt; T &gt; MakeUniqueImpl(Args &amp;&amp;..._args)</div><div class="ttdoc">Pass this to the constructor of a UniqueImplPtr object to easily initialize it. All the arguments pas...</div></div>
+<div class="ttc" id="anamespaceignition_1_1utils_html_ae439e27d065f3ded68283e193bcb47b8"><div class="ttname"><a href="namespaceignition_1_1utils.html#ae439e27d065f3ded68283e193bcb47b8">ignition::utils::MakeImpl</a></div><div class="ttdeci">ImplPtr&lt; T &gt; MakeImpl(Args &amp;&amp;..._args)</div><div class="ttdoc">Pass this to the constructor of an ImplPtr object to easily initialize it. All the arguments passed i...</div></div>
+<div class="ttc" id="anamespaceignition_html"><div class="ttname"><a href="namespaceignition.html">ignition</a></div><div class="ttdef"><b>Definition:</b> Environment.hh:27</div></div>
+<div class="ttc" id="aunique_ptr_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/memory/unique_ptr.html">std::unique_ptr</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+      </div>
+    </main>
+  </div>
+</body>
