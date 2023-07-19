@@ -22,6 +22,7 @@ build() {
   cd "${srcdir}/${_dir}"
   mkdir -p build && cd build
 
+  export LDFLAGS="-Wl,--copy-dt-needed-entries"
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
