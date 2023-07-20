@@ -1,9 +1,10 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Homalozoa <nx dot tardis at gmail dot com>
+# Contributor: Bernd Müller <github@muellerbernd.de>
 
 pkgname=ignition-msgs-5
 pkgver=5.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Messages for Gazebo robot simulation."
 arch=('i686' 'x86_64')
 url="https://gazebosim.org/libs/msgs"
