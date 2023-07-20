@@ -17,7 +17,7 @@ url="https://classic.gazebosim.org/"
 license=('Apache')
 depends=('boost' 'curl' 'freeglut' 'freeimage' 'tbb' 'libccd' 'libltdl' 'graphviz'
          'libtar' 'libxml2' 'ogre-1.9' 'protobuf' 'sdformat-9' 'ignition-math-6' 'ignition-transport-8'
-         'ignition-cmake-2' 'ignition-common-3' 'ignition-fuel_tools-4' 'ignition-msgs-5' 'tinyxml2' 'qwt')
+         'ignition-cmake-2' 'ignition-common-3' 'ignition-fuel_tools-4' 'ignition-msgs-5' 'tinyxml2' 'qwt' 'cppzmq')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg4.4: Playback movies on textured surfaces'

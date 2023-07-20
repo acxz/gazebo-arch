@@ -31,6 +31,7 @@ pkgbase = gazebo
 	depends = ignition-msgs-5
 	depends = tinyxml2
 	depends = qwt
+	depends = cppzmq
 	optdepends = bullet: Bullet support
 	optdepends = cegui: Design custom graphical interfaces
 	optdepends = ffmpeg4.4: Playback movies on textured surfaces
