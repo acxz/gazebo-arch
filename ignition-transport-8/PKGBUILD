@@ -10,7 +10,7 @@ url="https://gazebosim.org/libs/transport"
 license=('Apache')
 groups=('development')
 depends=('protobuf' 'protobuf-c' 'zeromq' 'ignition-msgs=5' 'ignition-tools=1'
-         'libutil-linux')
+         'libutil-linux' 'cppzmq')
 makedepends=('ignition-cmake=2' 'util-linux')
 provides=('ignition-transport=8')
 source=("https://github.com/gazebosim/gz-transport/archive/ignition-transport8_${pkgver}.tar.gz" "./protobuf-stubs-casts.patch")

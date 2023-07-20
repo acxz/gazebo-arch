@@ -15,6 +15,7 @@ pkgbase = ignition-transport-8
 	depends = ignition-msgs=5
 	depends = ignition-tools=1
 	depends = libutil-linux
+	depends = cppzmq
 	provides = ignition-transport=8
 	source = https://github.com/gazebosim/gz-transport/archive/ignition-transport8_8.4.0.tar.gz
 	source = ./protobuf-stubs-casts.patch
