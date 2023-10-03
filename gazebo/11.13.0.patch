@@ -1,0 +1,1196 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 90780f5ca0..5c45dcce27 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -193,7 +193,7 @@ set(GAZEBO_MODEL_DATABASE_URI http://models.gazebosim.org)
+ set(OGRE_RESOURCE_PATH ${OGRE_PLUGINDIR})
+ # Seems that OGRE_PLUGINDIR can end in a newline, which will cause problems when
+ # we pass it to the compiler later.
+-string(REPLACE "\n" "" OGRE_RESOURCE_PATH ${OGRE_RESOURCE_PATH})
++string(REPLACE "\n" "" OGRE_RESOURCE_PATH "${OGRE_RESOURCE_PATH}")
+ FILE(TO_CMAKE_PATH "${OGRE_RESOURCE_PATH}" OGRE_RESOURCE_PATH)
+ 
+ 
+diff --git a/cmake/SearchForStuff.cmake b/cmake/SearchForStuff.cmake
+index b1cb3f37b3..732cbb4e2d 100644
+--- a/cmake/SearchForStuff.cmake
++++ b/cmake/SearchForStuff.cmake
+@@ -31,23 +31,43 @@ endif()
+ 
+ ########################################
+ # The Google Protobuf library for message generation + serialization
+-find_package(Protobuf REQUIRED)
+-if (NOT PROTOBUF_FOUND)
+-  BUILD_ERROR ("Missing: Google Protobuf (libprotobuf-dev)")
+-endif()
+-if (NOT PROTOBUF_PROTOC_EXECUTABLE)
+-  BUILD_ERROR ("Missing: Google Protobuf Compiler (protobuf-compiler)")
+-endif()
+-if (NOT PROTOBUF_PROTOC_LIBRARY)
+-  BUILD_ERROR ("Missing: Google Protobuf Compiler Library (libprotoc-dev)")
++
++# Protobuf >= 22 requires to link abseil, so we are constrained to use
++# find_package(Protobuf) and link to protobuf::libprotobuf,
++# see https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/4075#issuecomment-1569242816
++if (DEFINED PROTOBUF_VERSION AND PROTOBUF_VERSION GREATER_EQUAL 22.0)
++  set(GZ_PROTOBUF_USE_CMAKE_CONFIG_DEFAULT ON)
++else()
++  set(GZ_PROTOBUF_USE_CMAKE_CONFIG_DEFAULT OFF)
+ endif()
++option(GZ_PROTOBUF_USE_CMAKE_CONFIG "If true use protobuf-config.cmake to find protobuf" ${GZ_PROTOBUF_USE_CMAKE_CONFIG_DEFAULT})
++mark_as_advanced(GZ_PROTOBUF_USE_CMAKE_CONFIG)
+ 
+-if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+-  set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY_DEBUG})
+-  set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY_DEBUG})
++if(NOT GZ_PROTOBUF_USE_CMAKE_CONFIG)
++  find_package(Protobuf REQUIRED)
++  if (NOT PROTOBUF_FOUND)
++    BUILD_ERROR ("Missing: Google Protobuf (libprotobuf-dev)")
++  endif()
++  if (NOT PROTOBUF_PROTOC_EXECUTABLE)
++    BUILD_ERROR ("Missing: Google Protobuf Compiler (protobuf-compiler)")
++  endif()
++  if (NOT PROTOBUF_PROTOC_LIBRARY)
++    BUILD_ERROR ("Missing: Google Protobuf Compiler Library (libprotoc-dev)")
++  endif()
++  if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
++    set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY_DEBUG})
++    set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY_DEBUG})
++  else()
++    set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY})
++    set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY})
++  endif()
+ else()
+-  set (GZ_PROTOBUF_LIBRARY ${PROTOBUF_LIBRARY})
+-  set (GZ_PROTOBUF_PROTOC_LIBRARY ${PROTOBUF_PROTOC_LIBRARY})
++  find_package(Protobuf CONFIG REQUIRED)
++  set (GZ_PROTOBUF_LIBRARY protobuf::libprotobuf)
++  set (GZ_PROTOBUF_PROTOC_LIBRARY protobuf::libprotoc)
++  if(NOT DEFINED PROTOBUF_PROTOC_EXECUTABLE)
++    get_target_property(PROTOBUF_PROTOC_EXECUTABLE protobuf::protoc LOCATION)
++  endif()
+ endif()
+ 
+ ########################################
+@@ -147,6 +167,10 @@ if (PKG_CONFIG_FOUND)
+   find_package(Simbody)
+   if (Simbody_FOUND)
+     message (STATUS "Looking for Simbody - found")
++    # When simbody is found but it static libs, we need to add it manually.
++    if ("${Simbody_LIBRARIES}" STREQUAL "" OR "${Simbody_LIBRARIES}" STREQUAL "Simbody_LIBRARIES-NOTFOUND")
++      set(Simbody_LIBRARIES ${Simbody_STATIC_LIBRARIES})
++    endif()
+     set (HAVE_SIMBODY TRUE)
+   else()
+     message (STATUS "Looking for Simbody - not found")
+@@ -567,9 +591,15 @@ if (PKG_CONFIG_FOUND)
+   if (NOT BULLET_FOUND)
+      pkg_check_modules(BULLET bullet2.82>=2.82)
+   endif()
+-
++  if (NOT BULLET_FOUND)
++    find_package(BULLET CONFIG 2.82)
++  endif()
+   if (BULLET_FOUND)
+     set (HAVE_BULLET TRUE)
++    if (${BULLET_VERSION} STREQUAL "")
++      set (BULLET_VERSION ${BULLET_VERSION_STRING})
++    endif()
++    message (STATUS "Bullet found: " ${BULLET_VERSION})
+     add_definitions( -DLIBBULLET_VERSION=${BULLET_VERSION} )
+   else()
+     set (HAVE_BULLET FALSE)
+@@ -751,6 +781,9 @@ if (NOT GRAPHVIZ_FOUND)
+ else ()
+   message (STATUS "Looking for libgraphviz-dev - found")
+   set (HAVE_GRAPHVIZ ON CACHE BOOL "HAVE GRAPHVIZ" FORCE)
++  if (${GRAPHVIZ_CGRAPH_PKG_VERSION} VERSION_LESS 9.0)
++    set(GRAPHVIZ_VERSION_LT_9 TRUE)
++  endif ()
+ endif ()
+ 
+ ########################################
+diff --git a/cmake/gazebo-config.cmake.in b/cmake/gazebo-config.cmake.in
+index 96993f93fa..ac1de2c061 100644
+--- a/cmake/gazebo-config.cmake.in
++++ b/cmake/gazebo-config.cmake.in
+@@ -166,9 +166,18 @@ list(APPEND @PKG_NAME@_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
+ list(APPEND @PKG_NAME@_LIBRARIES ${Boost_LIBRARIES})
+ 
+ # Find protobuf
+-find_package(Protobuf REQUIRED)
+-list(APPEND @PKG_NAME@_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIRS})
+-list(APPEND @PKG_NAME@_LIBRARIES ${PROTOBUF_LIBRARIES})
++set(GZ_PROTOBUF_USE_CMAKE_CONFIG @GZ_PROTOBUF_USE_CMAKE_CONFIG@)
++
++if(NOT GZ_PROTOBUF_USE_CMAKE_CONFIG)
++  find_package(Protobuf REQUIRED)
++  list(APPEND @PKG_NAME@_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIRS})
++  list(APPEND @PKG_NAME@_LIBRARIES ${PROTOBUF_LIBRARIES})
++else()
++  find_package(Protobuf CONFIG REQUIRED)
++  list(APPEND @PKG_NAME@_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIRS})
++  list(APPEND @PKG_NAME@_LIBRARIES protobuf::libprotoc)
++  list(APPEND @PKG_NAME@_LIBRARIES protobuf::libprotobuf)
++endif()
+ 
+ # Find SDFormat
+ find_package(sdformat9 REQUIRED VERSION 9.8)
+diff --git a/gazebo/Server.cc b/gazebo/Server.cc
+index 043b50586e..bf758ddb25 100644
+--- a/gazebo/Server.cc
++++ b/gazebo/Server.cc
+@@ -199,7 +199,7 @@ bool Server::ParseArgs(int _argc, char **_argv)
+     ("record_resources", "Recording with model meshes and materials.")
+     ("seed",  po::value<double>(), "Start with a given random number seed.")
+     ("initial_sim_time", po::value<double>(),
+-     "Initial simulation time (seconds).")
++     "Initial simulation time (seconds). This time is also used after reset.")
+     ("iters",  po::value<unsigned int>(), "Number of iterations to simulate.")
+     ("minimal_comms", "Reduce the TCP/IP traffic output by gzserver")
+     ("server-plugin,s", po::value<std::vector<std::string> >(),
+@@ -412,8 +412,10 @@ bool Server::ParseArgs(int _argc, char **_argv)
+   {
+     try
+     {
+-      physics::get_world()->SetSimTime(
+-          common::Time(this->dataPtr->vm["initial_sim_time"].as<double>()));
++      common::Time initialSimTime {
++        this->dataPtr->vm["initial_sim_time"].as<double>()};
++      physics::get_world()->SetSimTime(initialSimTime);
++      physics::get_world()->SetInitialSimTime(initialSimTime);
+       gzmsg << "Setting initial sim time to [" <<
+         physics::get_world()->SimTime() << "]\n" << std::endl;
+     }
+diff --git a/gazebo/common/CommonIface.hh b/gazebo/common/CommonIface.hh
+index cc990d8a14..82606a8528 100644
+--- a/gazebo/common/CommonIface.hh
++++ b/gazebo/common/CommonIface.hh
+@@ -85,6 +85,12 @@ namespace gazebo
+     GZ_COMMON_VISIBLE
+     const char *getEnv(const char *_name);
+ 
++#ifdef _WIN32
++    #define HOMEDIR "USERPROFILE"
++#else
++    #define HOMEDIR "HOME"
++#endif  // _WIN32
++
+     /// \brief Get the current working directory
+     /// \return Name of the current directory
+     GZ_COMMON_VISIBLE
+diff --git a/gazebo/common/Console.cc b/gazebo/common/Console.cc
+index 5bda931a05..6b86bc2d02 100644
+--- a/gazebo/common/Console.cc
++++ b/gazebo/common/Console.cc
+@@ -23,6 +23,7 @@
+ #include "gazebo/common/Exception.hh"
+ #include "gazebo/common/Time.hh"
+ #include "gazebo/common/Console.hh"
++#include "gazebo/common/CommonIface.hh"
+ 
+ #include "gazebo/gazebo_config.h"
+ 
+@@ -155,9 +156,9 @@ FileLogger::~FileLogger()
+ /////////////////////////////////////////////////
+ void FileLogger::Init(const std::string &_prefix, const std::string &_filename)
+ {
+-  if (!getenv("HOME"))
++  if (!getenv(HOMEDIR))
+   {
+-    gzerr << "Missing HOME environment variable."
++    gzerr << "Missing " << HOMEDIR << " environment variable."
+           << "No log file will be generated.";
+     return;
+   }
+@@ -165,7 +166,7 @@ void FileLogger::Init(const std::string &_prefix, const std::string &_filename)
+   FileLogger::Buffer *buf = static_cast<FileLogger::Buffer*>(
+       this->rdbuf());
+ 
+-  boost::filesystem::path logPath(getenv("HOME"));
++  boost::filesystem::path logPath(getenv(HOMEDIR));
+ 
+   // Create a subdirectory for the informational log. The name of the directory
+   // will be <PREFIX><MASTER_PORT>. E.g.: server-11346. If the environment
+diff --git a/gazebo/common/ModelDatabase.cc b/gazebo/common/ModelDatabase.cc
+index 4e46add362..c434a1cdf3 100644
+--- a/gazebo/common/ModelDatabase.cc
++++ b/gazebo/common/ModelDatabase.cc
+@@ -40,6 +40,7 @@
+ #include "gazebo/common/ModelDatabasePrivate.hh"
+ #include "gazebo/common/ModelDatabase.hh"
+ #include "gazebo/common/SemanticVersion.hh"
++#include "gazebo/common/CommonIface.hh"
+ 
+ using namespace gazebo;
+ using namespace common;
+@@ -503,7 +504,7 @@ std::string ModelDatabase::GetModelPath(const std::string &_uri,
+         continue;
+       }
+ 
+-      std::string outputPath = getenv("HOME");
++      std::string outputPath = getenv(HOMEDIR);
+       outputPath += "/.gazebo/models";
+ 
+ #ifndef _WIN32
+diff --git a/gazebo/common/SystemPaths.cc b/gazebo/common/SystemPaths.cc
+index 08e84f234e..788628eac7 100644
+--- a/gazebo/common/SystemPaths.cc
++++ b/gazebo/common/SystemPaths.cc
+@@ -38,6 +38,7 @@
+ #include "gazebo/common/Exception.hh"
+ #include "gazebo/common/ModelDatabase.hh"
+ #include "gazebo/common/SystemPaths.hh"
++#include "gazebo/common/CommonIface.hh"
+ 
+ using namespace gazebo;
+ using namespace common;
+@@ -81,7 +82,7 @@ SystemPaths::SystemPaths()
+     return;
+   }
+ 
+-  char *homePath = getenv("HOME");
++  char *homePath = getenv(HOMEDIR);
+   std::string home;
+   if (!homePath)
+     home = this->TmpPath() + "/gazebo";
+diff --git a/gazebo/gui/CMakeLists.txt b/gazebo/gui/CMakeLists.txt
+index d9a3326455..313595726b 100644
+--- a/gazebo/gui/CMakeLists.txt
++++ b/gazebo/gui/CMakeLists.txt
+@@ -206,6 +206,11 @@ add_dependencies(gzclient gazebo_gui)
+ target_compile_definitions(gazebo_gui
+   PRIVATE BUILDING_DLL_GZ_GUI
+ )
++if (GRAPHVIZ_VERSION_LT_9)
++  target_compile_definitions(gazebo_gui
++    PRIVATE GRAPHVIZ_VERSION_LT_9
++  )
++endif()
+ 
+ target_link_libraries(gazebo_gui
+   libgazebo_client
+diff --git a/gazebo/gui/DataLogger.cc b/gazebo/gui/DataLogger.cc
+index e25cb0157c..40f9eb32b9 100644
+--- a/gazebo/gui/DataLogger.cc
++++ b/gazebo/gui/DataLogger.cc
+@@ -254,11 +254,7 @@ DataLogger::DataLogger(QWidget *_parent)
+       "~/log/status",  &DataLogger::OnStatus, this);
+ 
+   // Fill the path with the home folder - duplicated from util/LogRecord
+-#ifndef _WIN32
+-  const char *homePath = common::getEnv("HOME");
+-#else
+-  const char *homePath = common::getEnv("HOMEPATH");
+-#endif
++  const char *homePath = common::getEnv(HOMEDIR);
+ 
+   GZ_ASSERT(homePath, "HOME environment variable is missing");
+ 
+diff --git a/gazebo/gui/GuiIface.cc b/gazebo/gui/GuiIface.cc
+index 018e3a6f23..1d6c03ed8a 100644
+--- a/gazebo/gui/GuiIface.cc
++++ b/gazebo/gui/GuiIface.cc
+@@ -43,12 +43,6 @@
+ #include "gazebo/gui/GuiPlugin.hh"
+ #include "gazebo/gui/RenderWidget.hh"
+ 
+-#ifdef WIN32
+-# define HOMEDIR "HOMEPATH"
+-#else
+-# define HOMEDIR "HOME"
+-#endif  // WIN32
+-
+ // These are needed by QT. They need to stay valid during the entire
+ // lifetime of the application, and argc > 0 and argv must contain one valid
+ // character string
+diff --git a/gazebo/gui/MainWindow.cc b/gazebo/gui/MainWindow.cc
+index 9cd24dde47..3fe883f77a 100644
+--- a/gazebo/gui/MainWindow.cc
++++ b/gazebo/gui/MainWindow.cc
+@@ -18,6 +18,7 @@
+ #include <functional>
+ 
+ #include <ignition/math/Pose3.hh>
++#include <ignition/transport/Node.hh>
+ #include <sdf/sdf.hh>
+ #include <boost/algorithm/string.hpp>
+ 
+@@ -27,6 +28,7 @@
+ #include "gazebo/common/Console.hh"
+ #include "gazebo/common/Events.hh"
+ #include "gazebo/common/Exception.hh"
++#include "gazebo/common/CommonIface.hh"
+ 
+ #include "gazebo/msgs/msgs.hh"
+ 
+@@ -361,8 +363,19 @@ void MainWindow::Init()
+                                             "/gazebo/world/modify",
+                                             &MainWindow::OnWorldModify, this);
+ 
+-  this->dataPtr->requestMsg = msgs::CreateRequest("scene_info");
+-  this->dataPtr->requestPub->Publish(*this->dataPtr->requestMsg);
++  // Get scene info from physics::World with ignition transport service
++  ignition::transport::Node node;
++  const std::string serviceName = "/scene_info";
++  std::vector<ignition::transport::ServicePublisher> publishers;
++  if (!node.ServiceInfo(serviceName, publishers) ||
++      !node.Request(serviceName, &MainWindow::OnSceneInfo, this))
++  {
++    gzwarn << "Ignition transport [" << serviceName << "] service call failed,"
++           << " falling back to gazebo transport [scene_info] request."
++           << std::endl;
++    this->dataPtr->requestMsg = msgs::CreateRequest("scene_info");
++    this->dataPtr->requestPub->Publish(*this->dataPtr->requestMsg);
++  }
+ 
+   gui::Events::mainWindowReady();
+ }
+@@ -463,10 +476,10 @@ void MainWindow::Open()
+ /////////////////////////////////////////////////
+ void MainWindow::SaveINI()
+ {
+-  char *home = getenv("HOME");
++  char *home = getenv(HOMEDIR);
+   if (!home)
+   {
+-    gzerr << "HOME environment variable not found. "
++    gzerr << HOMEDIR << " environment variable not found. "
+       "Unable to save configuration file\n";
+     return;
+   }
+@@ -2149,8 +2162,19 @@ void MainWindow::OnResponse(ConstResponsePtr &_msg)
+ 
+   if (_msg->has_type() && _msg->type() == sceneMsg.GetTypeName())
+   {
+-    sceneMsg.ParseFromString(_msg->serialized_data());
++    bool parseResult = sceneMsg.ParseFromString(_msg->serialized_data());
++    this->OnSceneInfo(sceneMsg, parseResult);
++  }
++
++  delete this->dataPtr->requestMsg;
++  this->dataPtr->requestMsg = nullptr;
++}
+ 
++/////////////////////////////////////////////////
++void MainWindow::OnSceneInfo(const msgs::Scene &sceneMsg, const bool _result)
++{
++  if (_result)
++  {
+     for (int i = 0; i < sceneMsg.model_size(); ++i)
+     {
+       this->dataPtr->entities[sceneMsg.model(i).name()] =
+@@ -2176,9 +2200,10 @@ void MainWindow::OnResponse(ConstResponsePtr &_msg)
+       gui::Events::lightUpdate(sceneMsg.light(i));
+     }
+   }
+-
+-  delete this->dataPtr->requestMsg;
+-  this->dataPtr->requestMsg = nullptr;
++  else
++  {
++    gzerr << "Error when requesting scene_info" << std::endl;
++  }
+ }
+ 
+ /////////////////////////////////////////////////
+diff --git a/gazebo/gui/MainWindow.hh b/gazebo/gui/MainWindow.hh
+index 1defb94a57..2d6ab41c7a 100644
+--- a/gazebo/gui/MainWindow.hh
++++ b/gazebo/gui/MainWindow.hh
+@@ -285,6 +285,12 @@ namespace gazebo
+       /// \param[in] _msg Pointer to the light message.
+       private: void OnLight(ConstLightPtr &_msg);
+ 
++      /// \brief Called when the scene info service replies with the scene
++      /// message.
++      /// \param[in] _msg The message.
++      /// \param[in] _result Flag indicating if service call succeeded.
++      private: void OnSceneInfo(const msgs::Scene &_msg, const bool _result);
++
+       private: void OnResponse(ConstResponsePtr &_msg);
+       private: void OnWorldModify(ConstWorldModifyPtr &_msg);
+       private: void OnManipMode(const std::string &_mode);
+diff --git a/gazebo/gui/SaveEntityDialog.cc b/gazebo/gui/SaveEntityDialog.cc
+index 296cf10fb7..66e49262aa 100644
+--- a/gazebo/gui/SaveEntityDialog.cc
++++ b/gazebo/gui/SaveEntityDialog.cc
+@@ -19,6 +19,7 @@
+ 
+ #include "gazebo/common/SystemPaths.hh"
+ #include "gazebo/common/Console.hh"
++#include "gazebo/common/CommonIface.hh"
+ 
+ #include "gazebo/gui/GuiIface.hh"
+ #include "gazebo/gui/SaveEntityDialog.hh"
+@@ -408,7 +409,7 @@ void SaveEntityDialog::AddDirToModelPaths(const std::string &_path)
+ 
+     // Save any changes that were made to the property tree
+     // TODO: check gui.ini env variable
+-    char *home = getenv("HOME");
++    char *home = getenv(HOMEDIR);
+     if (home)
+     {
+       boost::filesystem::path guiINIPath = home;
+diff --git a/gazebo/gui/qgv/private/QGVCore.h b/gazebo/gui/qgv/private/QGVCore.h
+index 48ec1a10df..1bf3a8e846 100644
+--- a/gazebo/gui/qgv/private/QGVCore.h
++++ b/gazebo/gui/qgv/private/QGVCore.h
+@@ -102,7 +102,10 @@ class QGVCore
+       rdr.len = strlen(cp);
+       rdr.cur = 0;
+ 
++#ifdef GRAPHVIZ_VERSION_LT_9
++      // This variable only exists for versions before Graphviz 9.0
+       disc.mem = &AgMemDisc;
++#endif
+       disc.id = &AgIdDisc;
+       disc.io = &memIoDisc;
+       g = agread(&rdr, &disc);
+diff --git a/gazebo/physics/World.cc b/gazebo/physics/World.cc
+index f64078424e..714be31478 100644
+--- a/gazebo/physics/World.cc
++++ b/gazebo/physics/World.cc
+@@ -1455,7 +1455,7 @@ Light_V World::Lights() const
+ //////////////////////////////////////////////////
+ void World::ResetTime()
+ {
+-  this->dataPtr->simTime = common::Time(0);
++  this->dataPtr->simTime = common::Time(this->dataPtr->initialSimTime);
+   this->dataPtr->pauseTime = common::Time(0);
+   this->dataPtr->startTime = common::Time::GetWallTime();
+   this->dataPtr->realTimeOffset = common::Time(0);
+@@ -1528,6 +1528,12 @@ void World::SetSimTime(const common::Time &_t)
+   this->dataPtr->simTime = _t;
+ }
+ 
++//////////////////////////////////////////////////
++void World::SetInitialSimTime(const common::Time &_t)
++{
++  this->dataPtr->initialSimTime = _t;
++}
++
+ //////////////////////////////////////////////////
+ gazebo::common::Time World::PauseTime() const
+ {
+diff --git a/gazebo/physics/World.hh b/gazebo/physics/World.hh
+index 3070cdb5c5..2284318f01 100644
+--- a/gazebo/physics/World.hh
++++ b/gazebo/physics/World.hh
+@@ -240,6 +240,10 @@ namespace gazebo
+       /// \return The real time.
+       public: common::Time RealTime() const;
+ 
++      /// \brief Set the initial sim time.
++      /// \param[in] _t The new simulation time
++      public: void SetInitialSimTime(const common::Time &_t);
++
+       /// \brief Returns the state of the simulation true if paused.
+       /// \return True if paused.
+       public: bool IsPaused() const;
+diff --git a/gazebo/physics/WorldPrivate.hh b/gazebo/physics/WorldPrivate.hh
+index 694813c61e..1883aa0111 100644
+--- a/gazebo/physics/WorldPrivate.hh
++++ b/gazebo/physics/WorldPrivate.hh
+@@ -86,6 +86,9 @@ namespace gazebo
+       /// \brief Clock time when simulation was started.
+       public: common::Time startTime;
+ 
++      /// \brief Initial simulation time.
++      public: common::Time initialSimTime;
++
+       /// \brief True if simulation is paused.
+       public: bool pause;
+ 
+diff --git a/gazebo/physics/simbody/SimbodyPhysics.cc b/gazebo/physics/simbody/SimbodyPhysics.cc
+index b86ca41bb2..dc4944c2dd 100644
+--- a/gazebo/physics/simbody/SimbodyPhysics.cc
++++ b/gazebo/physics/simbody/SimbodyPhysics.cc
+@@ -65,7 +65,6 @@ typedef boost::shared_ptr<gazebo::physics::SimbodyJoint> SimbodyJointPtr;
+ 
+ using namespace gazebo;
+ using namespace physics;
+-using namespace SimTK;
+ 
+ GZ_REGISTER_PHYSICS_ENGINE("simbody", SimbodyPhysics)
+ 
+@@ -314,7 +313,7 @@ void SimbodyPhysics::InitModel(const physics::ModelPtr _model)
+     else
+     {
+       //---------------------- GENERATE MULTIBODY GRAPH ------------------------
+-      MultibodyGraphMaker mbgraph;
++      SimTK::MultibodyGraphMaker mbgraph;
+       this->CreateMultibodyGraph(mbgraph, _model);
+       // Optional: dump the graph to stdout for debugging or curiosity.
+       // mbgraph.dumpGraph(gzdbg);
+@@ -929,7 +928,7 @@ void SimbodyPhysics::AddStaticModelToSimbodySystem(
+     if (simbodyLink)
+     {
+       this->AddCollisionsToLink(simbodyLink.get(), this->matter.updGround(),
+-        ContactCliqueId());
++        SimTK::ContactCliqueId());
+       simbodyLink->masterMobod = this->matter.updGround();
+     }
+     else
+@@ -946,7 +945,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+   // Generate a contact clique we can put collision geometry in to prevent
+   // self-collisions.
+   // \TODO: put this in a gazebo::physics::SimbodyModel class
+-  ContactCliqueId modelClique = ContactSurface::createNewContactClique();
++  SimTK::ContactCliqueId modelClique = SimTK::ContactSurface::createNewContactClique();
+ 
+   // Will specify explicitly when needed
+   // Record the MobilizedBody for the World link.
+@@ -960,7 +959,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+     // Get a mobilizer from the graph, then extract its corresponding
+     // joint and bodies. Note that these don't necessarily have equivalents
+     // in the GazeboLink and GazeboJoint inputs.
+-    const MultibodyGraphMaker::Mobilizer& mob = _mbgraph.getMobilizer(mobNum);
++    const SimTK::MultibodyGraphMaker::Mobilizer& mob = _mbgraph.getMobilizer(mobNum);
+     const std::string& type = mob.getJointTypeName();
+ 
+     // The inboard body always corresponds to one of the input links,
+@@ -974,7 +973,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+     SimbodyLink* gzOutb =
+       static_cast<SimbodyLink*>(mob.getOutboardMasterBodyRef());
+ 
+-    const MassProperties massProps =
++    const SimTK::MassProperties massProps =
+         gzOutb->GetEffectiveMassProps(mob.getNumFragments());
+ 
+     // debug
+@@ -987,9 +986,9 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+     //         << "\n";
+ 
+     // This will reference the new mobilized body once we create it.
+-    MobilizedBody mobod;
++    SimTK::MobilizedBody mobod;
+ 
+-    MobilizedBody parentMobod =
++    SimTK::MobilizedBody parentMobod =
+       gzInb == nullptr ? this->matter.Ground() : gzInb->masterMobod;
+ 
+     if (mob.isAddedBaseMobilizer())
+@@ -1001,9 +1000,9 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+       GZ_ASSERT(type == "free", "type is not 'free', not allowed.");
+       if (type == "free")
+       {
+-        MobilizedBody::Free freeJoint(
+-            parentMobod,  Transform(),
+-            massProps,    Transform());
++        SimTK::MobilizedBody::Free freeJoint(
++            parentMobod,  SimTK::Transform(),
++            massProps,    SimTK::Transform());
+ 
+         SimTK::Transform inboard_X_ML;
+         if (gzInb == nullptr)
+@@ -1036,26 +1035,26 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+       // Find inboard and outboard frames for the mobilizer; these are
+       // parent and child frames or the reverse.
+ 
+-      const Transform& X_IF0 = isReversed ? gzJoint->xCB : gzJoint->xPA;
+-      const Transform& X_OM0 = isReversed ? gzJoint->xPA : gzJoint->xCB;
++      const SimTK::Transform& X_IF0 = isReversed ? gzJoint->xCB : gzJoint->xPA;
++      const SimTK::Transform& X_OM0 = isReversed ? gzJoint->xPA : gzJoint->xCB;
+ 
+-      const MobilizedBody::Direction direction =
+-          isReversed ? MobilizedBody::Reverse : MobilizedBody::Forward;
++      const SimTK::MobilizedBody::Direction direction =
++          isReversed ? SimTK::MobilizedBody::Reverse : SimTK::MobilizedBody::Forward;
+ 
+       if (type == "free")
+       {
+-        MobilizedBody::Free freeJoint(
++        SimTK::MobilizedBody::Free freeJoint(
+             parentMobod,  X_IF0,
+             massProps,          X_OM0,
+             direction);
+-        Transform defX_FM = isReversed ? Transform(~gzJoint->defxAB)
++        SimTK::Transform defX_FM = isReversed ? SimTK::Transform(~gzJoint->defxAB)
+                                        : gzJoint->defxAB;
+         freeJoint.setDefaultTransform(defX_FM);
+         mobod = freeJoint;
+       }
+       else if (type == "screw")
+       {
+-        UnitVec3 axis(
++        SimTK::UnitVec3 axis(
+           SimbodyPhysics::Vector3ToVec3(
+             gzJoint->AxisFrameOffset(0).RotateVector(
+             gzJoint->LocalAxis(0))));
+@@ -1071,10 +1070,10 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+         }
+ 
+         // Simbody's screw joint axis (both rotation and translation) is along Z
+-        Rotation R_JZ(axis, ZAxis);
+-        Transform X_IF(X_IF0.R()*R_JZ, X_IF0.p());
+-        Transform X_OM(X_OM0.R()*R_JZ, X_OM0.p());
+-        MobilizedBody::Screw screwJoint(
++        SimTK::Rotation R_JZ(axis, SimTK::ZAxis);
++        SimTK::Transform X_IF(X_IF0.R()*R_JZ, X_IF0.p());
++        SimTK::Transform X_OM(X_OM0.R()*R_JZ, X_OM0.p());
++        SimTK::MobilizedBody::Screw screwJoint(
+             parentMobod,      X_IF,
+             massProps,        X_OM,
+             -1.0/pitch,
+@@ -1088,7 +1087,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+ 
+         // initialize stop stiffness and dissipation from joint parameters
+         gzJoint->limitForce[0] =
+-          Force::MobilityLinearStop(this->forces, mobod,
++          SimTK::Force::MobilityLinearStop(this->forces, mobod,
+           SimTK::MobilizerQIndex(0), gzJoint->GetStopStiffness(0),
+           gzJoint->GetStopDissipation(0), low, high);
+ 
+@@ -1099,22 +1098,22 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+         // is zero.  This will allow user to change damping coefficients
+         // on the fly.
+         gzJoint->damper[0] =
+-          Force::MobilityLinearDamper(this->forces, mobod, 0,
++          SimTK::Force::MobilityLinearDamper(this->forces, mobod, 0,
+                                    gzJoint->GetDamping(0));
+ 
+         // add spring (stiffness proportional to mass)
+         gzJoint->spring[0] =
+-          Force::MobilityLinearSpring(this->forces, mobod, 0,
++          SimTK::Force::MobilityLinearSpring(this->forces, mobod, 0,
+             gzJoint->GetStiffness(0),
+             gzJoint->GetSpringReferencePosition(0));
+       }
+       else if (type == "universal")
+       {
+-        UnitVec3 axis1(SimbodyPhysics::Vector3ToVec3(
++        SimTK::UnitVec3 axis1(SimbodyPhysics::Vector3ToVec3(
+           gzJoint->AxisFrameOffset(0).RotateVector(
+           gzJoint->LocalAxis(UniversalJoint<Joint>::AXIS_PARENT))));
+         /// \TODO: check if this is right, or AxisFrameOffset(1) is needed.
+-        UnitVec3 axis2(SimbodyPhysics::Vector3ToVec3(
++        SimTK::UnitVec3 axis2(SimbodyPhysics::Vector3ToVec3(
+           gzJoint->AxisFrameOffset(0).RotateVector(
+           gzJoint->LocalAxis(UniversalJoint<Joint>::AXIS_CHILD))));
+ 
+@@ -1122,10 +1121,10 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+         // note X and Y are reversed because Simbody defines universal joint
+         // rotation in body-fixed frames, whereas Gazebo/ODE uses space-fixed
+         // frames.
+-        Rotation R_JF(axis1, XAxis, axis2, YAxis);
+-        Transform X_IF(X_IF0.R()*R_JF, X_IF0.p());
+-        Transform X_OM(X_OM0.R()*R_JF, X_OM0.p());
+-        MobilizedBody::Universal uJoint(
++        SimTK::Rotation R_JF(axis1, SimTK::XAxis, axis2, SimTK::YAxis);
++        SimTK::Transform X_IF(X_IF0.R()*R_JF, X_IF0.p());
++        SimTK::Transform X_OM(X_OM0.R()*R_JF, X_OM0.p());
++        SimTK::MobilizedBody::Universal uJoint(
+             parentMobod,      X_IF,
+             massProps,        X_OM,
+             direction);
+@@ -1138,7 +1137,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+ 
+           // initialize stop stiffness and dissipation from joint parameters
+           gzJoint->limitForce[nj] =
+-            Force::MobilityLinearStop(this->forces, mobod,
++            SimTK::Force::MobilityLinearStop(this->forces, mobod,
+             SimTK::MobilizerQIndex(nj), gzJoint->GetStopStiffness(nj),
+             gzJoint->GetStopDissipation(nj), low, high);
+ 
+@@ -1154,11 +1153,11 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+           // is zero.  This will allow user to change damping coefficients
+           // on the fly.
+           gzJoint->damper[nj] =
+-            Force::MobilityLinearDamper(this->forces, mobod, nj,
++            SimTK::Force::MobilityLinearDamper(this->forces, mobod, nj,
+                                      gzJoint->GetDamping(nj));
+           // add spring (stiffness proportional to mass)
+           gzJoint->spring[nj] =
+-            Force::MobilityLinearSpring(this->forces, mobod, nj,
++            SimTK::Force::MobilityLinearSpring(this->forces, mobod, nj,
+               gzJoint->GetStiffness(nj),
+               gzJoint->GetSpringReferencePosition(nj));
+         }
+@@ -1174,7 +1173,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+         // simbody always assumes axis is specified in the child link frame.
+         // \TODO: come up with a test case where we might need to
+         // flip transform based on isReversed flag.
+-        UnitVec3 axis(
++        SimTK::UnitVec3 axis(
+           SimbodyPhysics::Vector3ToVec3(
+             gzJoint->AxisFrameOffset(0).RotateVector(
+             gzJoint->LocalAxis(0))));
+@@ -1185,10 +1184,10 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+         //          gzJoint->LocalAxis(0)) << "]\n";
+ 
+         // Simbody's pin is along Z
+-        Rotation R_JZ(axis, ZAxis);
+-        Transform X_IF(X_IF0.R()*R_JZ, X_IF0.p());
+-        Transform X_OM(X_OM0.R()*R_JZ, X_OM0.p());
+-        MobilizedBody::Pin pinJoint(
++        SimTK::Rotation R_JZ(axis, SimTK::ZAxis);
++        SimTK::Transform X_IF(X_IF0.R()*R_JZ, X_IF0.p());
++        SimTK::Transform X_OM(X_OM0.R()*R_JZ, X_OM0.p());
++        SimTK::MobilizedBody::Pin pinJoint(
+             parentMobod,      X_IF,
+             massProps,              X_OM,
+             direction);
+@@ -1199,7 +1198,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+ 
+         // initialize stop stiffness and dissipation from joint parameters
+         gzJoint->limitForce[0] =
+-          Force::MobilityLinearStop(this->forces, mobod,
++          SimTK::Force::MobilityLinearStop(this->forces, mobod,
+           SimTK::MobilizerQIndex(0), gzJoint->GetStopStiffness(0),
+           gzJoint->GetStopDissipation(0), low, high);
+ 
+@@ -1210,26 +1209,26 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+         // is zero.  This will allow user to change damping coefficients
+         // on the fly.
+         gzJoint->damper[0] =
+-          Force::MobilityLinearDamper(this->forces, mobod, 0,
++          SimTK::Force::MobilityLinearDamper(this->forces, mobod, 0,
+                                    gzJoint->GetDamping(0));
+ 
+         // add spring (stiffness proportional to mass)
+         gzJoint->spring[0] =
+-          Force::MobilityLinearSpring(this->forces, mobod, 0,
++          SimTK::Force::MobilityLinearSpring(this->forces, mobod, 0,
+             gzJoint->GetStiffness(0),
+             gzJoint->GetSpringReferencePosition(0));
+       }
+       else if (type == "prismatic")
+       {
+-        UnitVec3 axis(SimbodyPhysics::Vector3ToVec3(
++        SimTK::UnitVec3 axis(SimbodyPhysics::Vector3ToVec3(
+             gzJoint->AxisFrameOffset(0).RotateVector(
+             gzJoint->LocalAxis(0))));
+ 
+         // Simbody's slider is along X
+-        Rotation R_JX(axis, XAxis);
+-        Transform X_IF(X_IF0.R()*R_JX, X_IF0.p());
+-        Transform X_OM(X_OM0.R()*R_JX, X_OM0.p());
+-        MobilizedBody::Slider sliderJoint(
++        SimTK::Rotation R_JX(axis, SimTK::XAxis);
++        SimTK::Transform X_IF(X_IF0.R()*R_JX, X_IF0.p());
++        SimTK::Transform X_OM(X_OM0.R()*R_JX, X_OM0.p());
++        SimTK::MobilizedBody::Slider sliderJoint(
+             parentMobod,      X_IF,
+             massProps,              X_OM,
+             direction);
+@@ -1240,7 +1239,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+ 
+         // initialize stop stiffness and dissipation from joint parameters
+         gzJoint->limitForce[0] =
+-          Force::MobilityLinearStop(this->forces, mobod,
++          SimTK::Force::MobilityLinearStop(this->forces, mobod,
+           SimTK::MobilizerQIndex(0), gzJoint->GetStopStiffness(0),
+           gzJoint->GetStopDissipation(0), low, high);
+ 
+@@ -1248,30 +1247,30 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+         // is zero.  This will allow user to change damping coefficients
+         // on the fly.
+         gzJoint->damper[0] =
+-          Force::MobilityLinearDamper(this->forces, mobod, 0,
++          SimTK::Force::MobilityLinearDamper(this->forces, mobod, 0,
+                                    gzJoint->GetDamping(0));
+ 
+         // add spring (stiffness proportional to mass)
+         gzJoint->spring[0] =
+-          Force::MobilityLinearSpring(this->forces, mobod, 0,
++          SimTK::Force::MobilityLinearSpring(this->forces, mobod, 0,
+             gzJoint->GetStiffness(0),
+             gzJoint->GetSpringReferencePosition(0));
+       }
+       else if (type == "ball")
+       {
+-        MobilizedBody::Ball ballJoint(
++        SimTK::MobilizedBody::Ball ballJoint(
+             parentMobod,  X_IF0,
+             massProps,          X_OM0,
+             direction);
+-        Rotation defR_FM = isReversed
+-            ? Rotation(~gzJoint->defxAB.R())
++        SimTK::Rotation defR_FM = isReversed
++            ? SimTK::Rotation(~gzJoint->defxAB.R())
+             : gzJoint->defxAB.R();
+         ballJoint.setDefaultRotation(defR_FM);
+         mobod = ballJoint;
+       }
+       else if (type == "fixed")
+       {
+-        MobilizedBody::Weld fixedJoint(
++        SimTK::MobilizedBody::Weld fixedJoint(
+             parentMobod,  X_IF0,
+             massProps,    X_OM0);
+         mobod = fixedJoint;
+@@ -1311,7 +1310,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+       if (link->slaveMobods.empty()) continue;
+       for (unsigned i = 0; i < link->slaveMobods.size(); ++i)
+       {
+-        Constraint::Weld weld(link->masterMobod, link->slaveMobods[i]);
++        SimTK::Constraint::Weld weld(link->masterMobod, link->slaveMobods[i]);
+ 
+         // in case we want to know later
+         link->slaveWelds.push_back(weld);
+@@ -1322,7 +1321,7 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+   //   leave out optimization
+   // // Add the loop joints if any.
+   // for (int lcx=0; lcx < _mbgraph.getNumLoopConstraints(); ++lcx) {
+-  //     const MultibodyGraphMaker::LoopConstraint& loop =
++  //     const SimTK::MultibodyGraphMaker::LoopConstraint& loop =
+   //         _mbgraph.getLoopConstraint(lcx);
+ 
+   //     SimbodyJointPtr joint(loop.getJointRef());
+@@ -1330,18 +1329,18 @@ void SimbodyPhysics::AddDynamicModelToSimbodySystem(
+   //     SimbodyLinkPtr  child(loop.getChildBodyRef());
+ 
+   //     if (joint.type == "weld") {
+-  //         Constraint::Weld weld(parent.masterMobod, joint.xPA,
++  //         SimTK::Constraint::Weld weld(parent.masterMobod, joint.xPA,
+   //                               child.masterMobod,  joint.xCB);
+   //         joint.constraint = weld;
+   //     } else if (joint.type == "ball") {
+-  //         Constraint::Ball ball(parent.masterMobod, joint.xPA.p(),
++  //         SimTK::Constraint::Ball ball(parent.masterMobod, joint.xPA.p(),
+   //                               child.masterMobod,  joint.xCB.p());
+   //         joint.constraint = ball;
+   //     } else if (joint.type == "free") {
+   //         // A "free" loop constraint is no constraint at all so we can
+   //         // just ignore it. It might be more convenient if there were
+-  //         // a 0-constraint Constraint::Free, just as there is a 0-mobility
+-  //         // MobilizedBody::Weld.
++  //         // a 0-constraint SimTK::Constraint::Free, just as there is a 0-mobility
++  //         // SimTK::MobilizedBody::Weld.
+   //     } else
+   //         throw std::runtime_error(
+   //             "Unrecognized loop constraint type '" + joint.type + "'.");
+@@ -1403,7 +1402,7 @@ void SimbodyPhysics::SetSeed(uint32_t /*_seed*/)
+ 
+ /////////////////////////////////////////////////
+ void SimbodyPhysics::AddCollisionsToLink(const physics::SimbodyLink *_link,
+-  MobilizedBody &_mobod, ContactCliqueId _modelClique)
++  SimTK::MobilizedBody &_mobod, SimTK::ContactCliqueId _modelClique)
+ {
+   // TODO: Edit physics::Surface class to support these properties
+   // Define a material to use for contact. This is not very stiff.
+@@ -1429,7 +1428,7 @@ void SimbodyPhysics::AddCollisionsToLink(const physics::SimbodyLink *_link,
+   for (Collision_V::iterator ci =  collisions.begin();
+                              ci !=  collisions.end(); ++ci)
+   {
+-    Transform X_LC =
++    SimTK::Transform X_LC =
+       SimbodyPhysics::Pose2Transform((*ci)->RelativePose());
+ 
+     // use pointer to store CollisionGeometry
+@@ -1447,10 +1446,10 @@ void SimbodyPhysics::AddCollisionsToLink(const physics::SimbodyLink *_link,
+         // rotate it based on normal vector specified by user
+         // Create a rotation whos x-axis is in the
+         // negative normal vector direction
+-        Vec3 normal = SimbodyPhysics::Vector3ToVec3(p->Normal());
+-        Rotation R_XN(-UnitVec3(normal), XAxis);
++        SimTK::Vec3 normal = SimbodyPhysics::Vector3ToVec3(p->Normal());
++        SimTK::Rotation R_XN(-SimTK::UnitVec3(normal), SimTK::XAxis);
+ 
+-        ContactSurface surface(ContactGeometry::HalfSpace(), material);
++        SimTK::ContactSurface surface(SimTK::ContactGeometry::HalfSpace(), material);
+ 
+         if (addModelClique)
+             surface.joinClique(_modelClique);
+@@ -1469,7 +1468,7 @@ void SimbodyPhysics::AddCollisionsToLink(const physics::SimbodyLink *_link,
+         boost::shared_ptr<physics::SphereShape> s =
+           boost::dynamic_pointer_cast<physics::SphereShape>((*ci)->GetShape());
+         double r = s->GetRadius();
+-        ContactSurface surface(ContactGeometry::Sphere(r), material);
++        SimTK::ContactSurface surface(SimTK::ContactGeometry::Sphere(r), material);
+         if (addModelClique)
+             surface.joinClique(_modelClique);
+         int surfNum = _mobod.updBody().addContactSurface(X_LC, surface);
+@@ -1491,13 +1490,13 @@ void SimbodyPhysics::AddCollisionsToLink(const physics::SimbodyLink *_link,
+ 
+         // chunky hexagonal shape
+         const int resolution = 1;
+-        const PolygonalMesh mesh = PolygonalMesh::
+-            createCylinderMesh(ZAxis, r, len/2, resolution);
+-        const ContactGeometry::TriangleMesh triMesh(mesh);
+-        ContactSurface surface(triMesh, material, 1 /*Thickness*/);
++        const SimTK::PolygonalMesh mesh = SimTK::PolygonalMesh::
++            createCylinderMesh(SimTK::ZAxis, r, len/2, resolution);
++        const SimTK::ContactGeometry::TriangleMesh triMesh(mesh);
++        SimTK::ContactSurface surface(triMesh, material, 1 /*Thickness*/);
+ 
+-        // Vec3 esz = Vec3(r, r, len/2);  // Use ellipsoid instead
+-        // ContactSurface surface(ContactGeometry::Ellipsoid(esz),
++        // SimTK::Vec3 esz = SimTK::Vec3(r, r, len/2);  // Use ellipsoid instead
++        // SimTK::ContactSurface surface(SimTK::ContactGeometry::Ellipsoid(esz),
+         //                        material);
+ 
+         if (addModelClique)
+@@ -1513,7 +1512,7 @@ void SimbodyPhysics::AddCollisionsToLink(const physics::SimbodyLink *_link,
+ 
+       case physics::Entity::BOX_SHAPE:
+       {
+-        Vec3 hsz = SimbodyPhysics::Vector3ToVec3(
++        SimTK::Vec3 hsz = SimbodyPhysics::Vector3ToVec3(
+           (boost::dynamic_pointer_cast<physics::BoxShape>(
+           (*ci)->GetShape()))->Size())/2;
+ 
+@@ -1522,12 +1521,12 @@ void SimbodyPhysics::AddCollisionsToLink(const physics::SimbodyLink *_link,
+         // number times to chop the longest side.
+         const int resolution = 6;
+         // const int resolution = 10 * (int)(max(hsz)/min(hsz) + 0.5);
+-        const PolygonalMesh mesh = PolygonalMesh::
++        const SimTK::PolygonalMesh mesh = SimTK::PolygonalMesh::
+             createBrickMesh(hsz, resolution);
+-        const ContactGeometry::TriangleMesh triMesh(mesh);
+-        ContactSurface surface(triMesh, material, 1 /*Thickness*/);
++        const SimTK::ContactGeometry::TriangleMesh triMesh(mesh);
++        SimTK::ContactSurface surface(triMesh, material, 1 /*Thickness*/);
+ 
+-        // ContactSurface surface(ContactGeometry::Ellipsoid(hsz),
++        // SimTK::ContactSurface surface(SimTK::ContactGeometry::Ellipsoid(hsz),
+         //                        material);
+ 
+         if (addModelClique)
+diff --git a/gazebo/rendering/Camera.cc b/gazebo/rendering/Camera.cc
+index 8b6e717e7e..246868298b 100644
+--- a/gazebo/rendering/Camera.cc
++++ b/gazebo/rendering/Camera.cc
+@@ -44,6 +44,7 @@
+ #include "gazebo/common/Console.hh"
+ #include "gazebo/common/Exception.hh"
+ #include "gazebo/common/VideoEncoder.hh"
++#include "gazebo/common/CommonIface.hh"
+ 
+ #include "gazebo/rendering/ogre_gazebo.h"
+ #include "gazebo/rendering/RTShaderSystem.hh"
+@@ -101,7 +102,7 @@ Camera::Camera(const std::string &_name, ScenePtr _scene,
+ 
+   this->sceneNode = NULL;
+ 
+-  this->screenshotPath = getenv("HOME");
++  this->screenshotPath = getenv(HOMEDIR);
+   this->screenshotPath += "/.gazebo/pictures";
+ 
+   // Connect to the render signal
+diff --git a/gazebo/transport/Node.hh b/gazebo/transport/Node.hh
+index e48836792f..7883afdb1c 100644
+--- a/gazebo/transport/Node.hh
++++ b/gazebo/transport/Node.hh
+@@ -289,6 +289,36 @@ namespace gazebo
+         return result;
+       }
+ 
++      /// \brief Subscribe to a topic using a bost::function as the callback,
++      /// allowing to pass lambdas.
++      /// \param[in] _topic The topic to subscribe to
++      /// \param[in] _cb Function to be called on receipt of new message
++      /// \param[in] _latching If true, latch latest incoming message;
++      /// otherwise don't latch
++      /// \return Pointer to new Subscriber object
++      public: template<typename M>
++      SubscriberPtr Subscribe(const std::string &_topic,
++          const boost::function<void (const boost::shared_ptr<M const> &)> &_cb,
++                     bool _latching = false)
++      {
++        SubscribeOptions ops;
++        std::string decodedTopic = this->DecodeTopicName(_topic);
++        ops.template Init<M>(decodedTopic, shared_from_this(), _latching);
++
++        {
++          boost::recursive_mutex::scoped_lock lock(this->incomingMutex);
++          this->callbacks[decodedTopic].push_back(
++              CallbackHelperPtr(new CallbackHelperT<M>(_cb, _latching)));
++        }
++
++        SubscriberPtr result =
++          transport::TopicManager::Instance()->Subscribe(ops);
++
++        result->SetCallbackId(this->callbacks[decodedTopic].back()->GetId());
++
++        return result;
++      }
++
+       /// \brief Subscribe to a topic using a bare function as the callback
+       /// \param[in] _topic The topic to subscribe to
+       /// \param[in] _fp Function to be called on receipt of new message
+diff --git a/gazebo/util/Diagnostics.cc b/gazebo/util/Diagnostics.cc
+index 55626b0fc1..a3bbe76f28 100644
+--- a/gazebo/util/Diagnostics.cc
++++ b/gazebo/util/Diagnostics.cc
+@@ -32,18 +32,14 @@ using namespace gazebo::util;
+ DiagnosticManager::DiagnosticManager()
+ : dataPtr(new DiagnosticManagerPrivate)
+ {
+-#ifndef _WIN32
+-  const char *homePath = common::getEnv("HOME");
+-#else
+-  const char *homePath = common::getEnv("HOMEPATH");
+-#endif
++  const char *homePath = common::getEnv(HOMEDIR);
+   this->dataPtr->logPath = homePath;
+ 
+   // Get the base of the time logging path
+   if (!homePath)
+   {
+     common::SystemPaths *paths = common::SystemPaths::Instance();
+-    gzwarn << "HOME environment variable missing. Diagnostic timing " <<
++    gzwarn << HOMEDIR << " environment variable missing. Diagnostic timing " <<
+       "information will be logged to " << paths->TmpPath() << "\n";
+     this->dataPtr->logPath = paths->TmpPath() + "/gazebo";
+   }
+diff --git a/gazebo/util/LogRecord.cc b/gazebo/util/LogRecord.cc
+index 19658f54a4..73eae372d0 100644
+--- a/gazebo/util/LogRecord.cc
++++ b/gazebo/util/LogRecord.cc
+@@ -71,13 +71,10 @@ LogRecord::LogRecord()
+   this->dataPtr->readyToStart = false;
+ 
+   // Get the user's home directory
+-#ifndef _WIN32
+-  const char *homePath = common::getEnv("HOME");
+-#else
+-  const char *homePath = common::getEnv("HOMEPATH");
+-#endif
+-
+-  GZ_ASSERT(homePath, "HOME environment variable is missing");
++  const char *homePath = common::getEnv(HOMEDIR);
++  std::string home_warning = HOMEDIR;
++  home_warning += " environment variable is missing";
++  GZ_ASSERT(homePath, home_warning.c_str());
+ 
+   if (!homePath)
+   {
+diff --git a/gazebo/util/LogRecord_TEST.cc b/gazebo/util/LogRecord_TEST.cc
+index 7448c2bfcf..70912ac25f 100644
+--- a/gazebo/util/LogRecord_TEST.cc
++++ b/gazebo/util/LogRecord_TEST.cc
+@@ -33,11 +33,7 @@ TEST_F(LogRecord_TEST, Constructor)
+ {
+   gazebo::util::LogRecord *recorder = gazebo::util::LogRecord::Instance();
+ 
+-#ifndef _WIN32
+-  const char *homePath = common::getEnv("HOME");
+-#else
+-  const char *homePath = common::getEnv("HOMEPATH");
+-#endif
++  const char *homePath = common::getEnv(HOMEDIR);
+ 
+   EXPECT_TRUE(homePath != NULL);
+ 
+diff --git a/test/integration/plugin.cc b/test/integration/plugin.cc
+index 19f605e535..e4240da9a6 100644
+--- a/test/integration/plugin.cc
++++ b/test/integration/plugin.cc
+@@ -17,6 +17,7 @@
+ #include <boost/filesystem.hpp>
+ 
+ #include "gazebo/test/ServerFixture.hh"
++#include "gazebo/common/CommonIface.hh"
+ 
+ using namespace gazebo;
+ class PluginTest : public ServerFixture
+@@ -36,7 +37,7 @@ TEST_F(PluginTest, ModelExceptionConstructor)
+ 
+   world->Step(100);
+ 
+-  char *home = getenv("HOME");
++  char *home = getenv(HOMEDIR);
+   ASSERT_TRUE(home);
+ 
+   boost::filesystem::path path(home);
+@@ -71,7 +72,7 @@ TEST_F(PluginTest, ModelExceptionInit)
+ 
+   world->Step(100);
+ 
+-  char *home = getenv("HOME");
++  char *home = getenv(HOMEDIR);
+   ASSERT_TRUE(home);
+ 
+   boost::filesystem::path path(home);
+@@ -106,7 +107,7 @@ TEST_F(PluginTest, ModelExceptionLoad)
+ 
+   world->Step(100);
+ 
+-  char *home = getenv("HOME");
++  char *home = getenv(HOMEDIR);
+   ASSERT_TRUE(home);
+ 
+   boost::filesystem::path path(home);
+diff --git a/test/integration/sdf_errors.cc b/test/integration/sdf_errors.cc
+index c1bce2b223..aa4e322e09 100644
+--- a/test/integration/sdf_errors.cc
++++ b/test/integration/sdf_errors.cc
+@@ -40,11 +40,7 @@ class SDFLogsTest : public ServerFixture
+ {
+   public: void SetUp()
+   {
+-#ifndef _WIN32
+-  const boost::filesystem::path home = common::getEnv("HOME");
+-#else
+-  const boost::filesystem::path home = common::getEnv("HOMEPATH");
+-#endif
++    const boost::filesystem::path home = common::getEnv(HOMEDIR);
+     boost::filesystem::path log_path("/.gazebo/server-11345/default.log");
+     path = home / log_path;
+   }
+diff --git a/test/integration/transport.cc b/test/integration/transport.cc
+index 494e4c40d9..ee6230bbc1 100644
+--- a/test/integration/transport.cc
++++ b/test/integration/transport.cc
+@@ -153,6 +153,35 @@ TEST_F(TransportTest, PubSub)
+   subs.clear();
+ }
+ 
++// Standard pub/sub using lambdas
++TEST_F(TransportTest, PubSubNoncapturingLambda)
++{
++  Load("worlds/empty.world");
++
++  transport::NodePtr node = transport::NodePtr(new transport::Node());
++  node->Init();
++  transport::PublisherPtr scenePub = node->Advertise<msgs::Scene>("~/scene");
++  transport::SubscriberPtr sceneSub = node->Subscribe<msgs::Scene>("~/scene",
++      +[](ConstScenePtr & _msg) -> void {
++      	g_sceneMsg=true;
++	  }
++  );
++}
++
++TEST_F(TransportTest, PubSubCapturingLambda)
++{
++  Load("worlds/empty.world");
++
++  transport::NodePtr node = transport::NodePtr(new transport::Node());
++  node->Init();
++  transport::PublisherPtr scenePub = node->Advertise<msgs::Scene>("~/scene");
++  transport::SubscriberPtr sceneSub = node->Subscribe<msgs::Scene>("~/scene",
++      [this](ConstScenePtr & _msg) -> void {
++      	g_sceneMsg=true;
++	  }
++  );
++}
++
+ /////////////////////////////////////////////////
+ TEST_F(TransportTest, DirectPublish)
+ {
+diff --git a/test/integration/world_with_initial_sim_time_from_cli.cc b/test/integration/world_with_initial_sim_time_from_cli.cc
+index 2a03034fd4..ca82f1c7cd 100644
+--- a/test/integration/world_with_initial_sim_time_from_cli.cc
++++ b/test/integration/world_with_initial_sim_time_from_cli.cc
+@@ -46,8 +46,18 @@ TEST_F(WorldWithInitialSimTimeFromCliTest, CheckInitialSimTime)
+ 
+   // check that the simulation time is the same as the initial sim time
+   EXPECT_DOUBLE_EQ(this->world->SimTime().Double(), initialSimTime);
++
++  // check that after a step, the simulation time advances
++  this->world->Step(2);
++  EXPECT_GT(this->world->SimTime().Double() - initialSimTime, 1e-4);
++
++  // check that the simulation time is again the same as the initial sim time
++  // after a reset
++  this->world->Reset();
++  EXPECT_DOUBLE_EQ(this->world->SimTime().Double(), initialSimTime);
+ }
+ 
++
+ /////////////////////////////////////////////////
+ int main(int argc, char **argv)
+ {

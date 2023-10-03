@@ -7,10 +7,11 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 # Contributor: Bernd Müller <github@muellerbernd.de>
+# Contributor: Zhirui Dai <daizhirui at hotmail dot com>
 
 pkgname=gazebo
 pkgver=11.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="https://classic.gazebosim.org/"
@@ -29,21 +30,41 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gazebo-classic/archive/${pkgname}11_$pkgver.tar.gz")
-sha256sums=('a990f27dd08e4461107ef8e29eef18470789e7cd87cdb26e7f384769603537fd')
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gazebo-classic/archive/${pkgname}11_$pkgver.tar.gz"
+    "11.13.0.patch"
+)
+sha256sums=(
+    'a990f27dd08e4461107ef8e29eef18470789e7cd87cdb26e7f384769603537fd'
+    '8f933eb261c1b08d968fc53f8ce0199293ec5d4e8b794634fd3334851a16a26a'
+)
 
 _pkgname=gazebo-classic
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgname}11_$pkgver"
+  patch -p1 -i "${srcdir}/11.13.0.patch"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgname}11_$pkgver"
 
   mkdir -p build && cd build
+  # the compiler may encounter a segmentfault, we need to resume the build
+  # remove CMakeCache.txt to make sure cmake is running correctly 
+  rm CMakeCache.txt || true  
 
   export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
   export LDFLAGS="-Wl,--copy-dt-needed-entries"
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
-           -DCMAKE_INSTALL_LIBDIR="lib"
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -Dprotobuf_MODULE_COMPATIBLE=TRUE
+  # we need to run cmake config twice due to a bug of FindIgnProtobuf in ignition-cmake2
+  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+           -DCMAKE_INSTALL_PREFIX="/usr" \
+           -DCMAKE_INSTALL_LIBDIR="lib" \
+           -Dprotobuf_MODULE_COMPATIBLE=TRUE
   make
 }
 
