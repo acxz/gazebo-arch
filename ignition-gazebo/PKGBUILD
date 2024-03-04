@@ -11,7 +11,7 @@ depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-cmake>2' 'ignition-common>3' 'ignition-math>6'
          'ignition-plugin' 'ignition-physics' 'ignition-rendering'
          'ignition-tools>1' 'ignition-transport>8' 'ignition-gui' 'ignition-msgs>5'
-         'sdformat' 'ignition-fuel_tools>4' 'ignition-sensors')
+         'sdformat' 'ignition-fuel_tools>4' 'ignition-sensors' 'cppzmq')
 makedepends=('cmake' 'ruby-ronn' 'doxygen')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sim/archive/gz-sim8_${pkgver}.tar.gz")
 sha256sums=('c6298a9d03b9a6e5badd1a78a3b178201e9efac2209bbc2fe5a6b6bbba85125c')
