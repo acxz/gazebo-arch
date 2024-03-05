@@ -29,10 +29,17 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gazebo-classic/archive/${pkgname}11_$pkgver.tar.gz")
-sha256sums=('6b63d857399ba08190c331b545d24e8e3e308b840ff051bbf39e87879e37af50')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gazebo-classic/archive/${pkgname}11_$pkgver.tar.gz"
+        "graphviz-10.patch::https://github.com/gazebosim/gazebo-classic/pull/3373.patch")
+sha256sums=('6b63d857399ba08190c331b545d24e8e3e308b840ff051bbf39e87879e37af50'
+            '60e40900a03308f52dfdb160e36066b53b9af8b5ee1174810d21148bc44ff31f')
 
 _pkgname=gazebo-classic
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${pkgname}11_$pkgver"
+    patch -Np1 -i ../graphviz-10.patch
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgname}11_$pkgver"
