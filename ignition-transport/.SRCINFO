@@ -17,6 +17,7 @@ pkgbase = ignition-transport
 	depends = ignition-utils>1
 	depends = libutil-linux
 	depends = tinyxml2
+	depends = cppzmq
 	source = ignition-transport-13.0.0.tar.gz::https://github.com/gazebosim/gz-transport/archive/gz-transport13_13.0.0.tar.gz
 	sha256sums = 8041d81693b69a94e36477178fdf1964f32725e520c33fec2e69c60f28fd84ca
 
